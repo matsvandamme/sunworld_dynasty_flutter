@@ -12,7 +12,7 @@ class StoreItem extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        elevation: 3,
+        elevation: 2,
         margin: EdgeInsets.all(3),
       ),
     );

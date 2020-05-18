@@ -18,7 +18,6 @@ class Food extends StatelessWidget {
 
             ///Properties of the App Bar when it is expanded
             flexibleSpace: FlexibleSpaceBar(
-              title: Text('Test'),
               background: Image.asset(
                 'assets/images/pexels-photo-2147491.jpeg',
                 fit: BoxFit.cover,
