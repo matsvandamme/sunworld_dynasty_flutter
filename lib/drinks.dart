@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:roomserviceapp/StoreItem.dart';
+import 'package:roomserviceapp/store_item.dart';
 
 class Drinks extends StatelessWidget {
   @override
@@ -37,7 +37,7 @@ class Drinks extends StatelessWidget {
                 /// To convert this infinite list to a list with "n" no of items,
                 /// uncomment the following line:
                 if (index > 10) return null;
-                return listItem();
+                return StoreItem();
               },
 
               /// Set childCount to limit no.of items
@@ -48,6 +48,4 @@ class Drinks extends StatelessWidget {
       ),
     );
   }
-
-  Widget listItem() => StoreItem();
 }

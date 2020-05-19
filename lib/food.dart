@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:roomserviceapp/StoreItem.dart';
+import 'package:roomserviceapp/menu_item.dart';
+import 'package:roomserviceapp/store_item.dart';
 
 class Food extends StatelessWidget {
   @override
@@ -18,6 +19,7 @@ class Food extends StatelessWidget {
 
             ///Properties of the App Bar when it is expanded
             flexibleSpace: FlexibleSpaceBar(
+              title: Text('Food'),
               background: Image.asset(
                 'assets/images/pexels-photo-2147491.jpeg',
                 fit: BoxFit.cover,
@@ -33,21 +35,29 @@ class Food extends StatelessWidget {
 
             ///Lazy building of list
             delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                /// To convert this infinite list to a list with "n" no of items,
-                /// uncomment the following line:
-                if (index > 10) return null;
-                return listItem();
+              (BuildContext context, int index) {
+                // To convert this infinite list to a list with three items,
+                // uncomment the following line:
+                // if (index > 3) return null;
+                return Card(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: Image.asset(
+                    'assets/images/Food/${index+1}.jpeg',
+                    fit: BoxFit.cover,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  elevation: 2,
+                  margin: EdgeInsets.all(3),
+                );
               },
-
-              /// Set childCount to limit no.of items
-              childCount: 10,
+              // Or, uncomment the following line:
+              childCount: foodList.length,
             ),
           )
         ],
       ),
     );
   }
-
-  Widget listItem() => StoreItem();
 }
