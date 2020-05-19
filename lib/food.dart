@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:roomserviceapp/menu_item.dart';
-import 'package:roomserviceapp/store_item.dart';
+import 'package:roomserviceapp/menu_items.dart';
+import 'package:roomserviceapp/item_card.dart';
 
 class Food extends StatelessWidget {
   @override
@@ -15,7 +15,7 @@ class Food extends StatelessWidget {
             floating: true,
             pinned: true,
             snap: true,
-            expandedHeight: 200,
+            expandedHeight: 150,
 
             ///Properties of the App Bar when it is expanded
             flexibleSpace: FlexibleSpaceBar(
