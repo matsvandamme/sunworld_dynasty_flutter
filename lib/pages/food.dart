@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:roomserviceapp/menu_items.dart';
-import 'package:roomserviceapp/item_card.dart';
+import 'package:roomserviceapp/classes/menu_items.dart';
+import 'package:roomserviceapp/page_modules/item_card.dart';
 
 class Food extends StatelessWidget {
   @override
@@ -35,25 +35,28 @@ class Food extends StatelessWidget {
 
             ///Lazy building of list
             delegate: SliverChildBuilderDelegate(
+              // ignore: missing_return
               (BuildContext context, int index) {
                 // To convert this infinite list to a list with three items,
                 // uncomment the following line:
                 // if (index > 3) return null;
-                return Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: Image.asset(
-                    'assets/images/Food/${index+1}.jpeg',
-                    fit: BoxFit.cover,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  elevation: 2,
-                  margin: EdgeInsets.all(3),
-                );
+                if (menuList[index].type == "food") {
+                  return Card(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: Image.asset(
+                      'assets/images/Food/${index + 1}.jpeg',
+                      fit: BoxFit.cover,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    elevation: 2,
+                    margin: EdgeInsets.all(3),
+                  );
+                }
               },
               // Or, uncomment the following line:
-              childCount: foodList.length,
+              childCount: countType(list:menuList, type:"food"),
             ),
           )
         ],

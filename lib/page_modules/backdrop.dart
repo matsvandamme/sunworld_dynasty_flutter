@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:backdrop/backdrop.dart';
 
-import 'page_control.dart';
+import '../pages/page_control.dart';
 
 class Backdrop extends StatelessWidget {
   @override

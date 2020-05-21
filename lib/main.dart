@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'backdrop.dart';
-import 'bottomappbar.dart';
+import 'page_modules/backdrop.dart';
+import 'page_modules/bottomappbar.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

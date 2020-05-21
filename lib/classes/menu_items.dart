@@ -12,9 +12,10 @@ class MenuItem {
     @required this.price,
     @required this.imageNumber,
   });
+
 }
 
-List<MenuItem> foodList = [
+List<MenuItem> menuList = [
   MenuItem(type: "food", name: "Indian-Style Beef Curry and Coconut Milk with Rice", price: 380, imageNumber: 1),
   MenuItem(type: "food", name: "Chef's Daily Soup", price: 220, imageNumber: 2),
   MenuItem(type: "food", name: "Malaysian Chicken Curry with Rice", price: 360, imageNumber: 3),
@@ -32,3 +33,13 @@ List<MenuItem> foodList = [
   MenuItem(type: "food", name: "Seasonal Fresh Fruit Plate", price: 320, imageNumber: 15),
   MenuItem(type: "food", name: "Chef's Salad", price: 380, imageNumber: 16),
 ];
+
+int countType({List<MenuItem> list, String type}) {
+  var count=0;
+  list.forEach((element) {
+    if (element.type==type) {
+      count = count + 1;
+    }
+  });
+  return count;
+}
