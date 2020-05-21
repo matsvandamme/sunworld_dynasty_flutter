@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:roomserviceapp/classes/menu_items.dart';
 import 'package:roomserviceapp/page_modules/item_card.dart';
 
-class Food extends StatelessWidget {
+class Dessert extends StatelessWidget {
 
-  final pageType = "Food";
+  final pageType = "Dessert";
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class Food extends StatelessWidget {
             ///Lazy building of list
             delegate: SliverChildBuilderDelegate(
               // ignore: missing_return
-              (BuildContext context, int index) {
+                  (BuildContext context, int index) {
                 // To convert this infinite list to a list with three items,
                 // uncomment the following line:
                 // if (index > 3) return null;
@@ -59,7 +59,7 @@ class Food extends StatelessWidget {
                 }
               },
               // Or, uncomment the following line:
-              childCount: countType(list:menuList, type:"food"),
+              childCount: countType(list:menuList, type:"dessert"),
             ),
           )
         ],

@@ -32,6 +32,8 @@ List<MenuItem> menuList = [
   MenuItem(type: "food", name: "Garden Vegetable Sandwich", price: 280, imageNumber: 14),
   MenuItem(type: "food", name: "Seasonal Fresh Fruit Plate", price: 320, imageNumber: 15),
   MenuItem(type: "food", name: "Chef's Salad", price: 380, imageNumber: 16),
+  MenuItem(type: "dessert", name: "Classic Baked Cheesecake with Strawberry Topping", price: 180, imageNumber: 1),
+  MenuItem(type: "dessert", name: "French Dessert Set", price: 200, imageNumber: 2),
 ];
 
 int countType({List<MenuItem> list, String type}) {
