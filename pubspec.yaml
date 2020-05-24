@@ -27,9 +27,10 @@ dependencies:
   backdrop: ^0.2.14
   package_info: ^0.4.0+17
   url_launcher: ^5.4.5
-
-
-
+  sticky_headers: ^0.1.8
+  flutter_sticky_header: ^0.4.2
+  random_color: ^1.0.5
+  cached_network_image: ^2.2.0+1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -54,6 +55,7 @@ flutter:
     - assets/images/
     - assets/images/Food/
     - assets/images/Dessert/
+    - assets/images/Drink/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

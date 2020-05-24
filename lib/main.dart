@@ -7,11 +7,11 @@ import 'page_modules/bottomappbar.dart';
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
-    Main(),
+    App(),
   );
 }
 
-class Main extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +19,7 @@ class Main extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
         primaryColor: Color(0xffaf002c),
-        accentColor: Color(0xff515151),
+        accentColor: Color(0xff424242),
       ),
       home: Scaffold(
         floatingActionButton: FloatingActionButton.extended(

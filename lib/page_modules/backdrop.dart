@@ -7,12 +7,13 @@ class Backdrop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
+      animationCurve: Curves.easeInOutBack,
       title: Text("Sunworld Dynasty Hotel Taipei"),
       backLayer: Center(
         child: null,
       ),
       frontLayer: Container(
-        color: Colors.grey[500],
+        color: Colors.white,
         child: Pagecontrol(),
       ),
       iconPosition: BackdropIconPosition.action,

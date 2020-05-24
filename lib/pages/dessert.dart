@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roomserviceapp/classes/menu_items.dart';
-import 'package:roomserviceapp/page_modules/item_card.dart';
 
 class Dessert extends StatelessWidget {
-
   final pageType = "Dessert";
 
   @override
@@ -43,11 +41,11 @@ class Dessert extends StatelessWidget {
                 // To convert this infinite list to a list with three items,
                 // uncomment the following line:
                 // if (index > 3) return null;
-                if (menuList[index].type == pageType.toLowerCase()) {
+                if (dessertList[index].type == pageType.toLowerCase()) {
                   return Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Image.asset(
-                      'assets/images/$pageType/${index + 1}.jpeg',
+                      'assets/images/${pageType}/${dessertList[index].imageNumber}.jpeg',
                       fit: BoxFit.cover,
                     ),
                     shape: RoundedRectangleBorder(
@@ -59,7 +57,7 @@ class Dessert extends StatelessWidget {
                 }
               },
               // Or, uncomment the following line:
-              childCount: countType(list:menuList, type:"dessert"),
+              childCount: dessertList.length,
             ),
           )
         ],

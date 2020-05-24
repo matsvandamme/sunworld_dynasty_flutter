@@ -1,22 +1,43 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StoreItem extends StatelessWidget {
+  final String itemType;
+  final int index;
+
+  StoreItem({@required this.itemType, @required this.index});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Center(
       child: Card(
-        child: Image.asset(
-          'assets/push.jpg',
-          fit: BoxFit.cover,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            const ListTile(
+              leading: Icon(Icons.album),
+              title: Text('The Enchanted Nightingale'),
+              subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
+            ),
+            ButtonBar(
+              children: <Widget>[
+                FlatButton(
+                  child: const Text('BUY TICKETS'),
+                  onPressed: () {
+                    /* ... */
+                  },
+                ),
+                FlatButton(
+                  child: const Text('LISTEN'),
+                  onPressed: () {
+                    /* ... */
+                  },
+                ),
+              ],
+            ),
+          ],
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        elevation: 2,
-        margin: EdgeInsets.all(3),
       ),
     );
   }
 }
-
-//test
