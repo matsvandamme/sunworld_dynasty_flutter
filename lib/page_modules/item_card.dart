@@ -11,30 +11,29 @@ class StoreItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Card(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const ListTile(
-              leading: Icon(Icons.album),
-              title: Text('The Enchanted Nightingale'),
-              subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-            ),
-            ButtonBar(
-              children: <Widget>[
-                FlatButton(
-                  child: const Text('BUY TICKETS'),
-                  onPressed: () {
-                    /* ... */
-                  },
-                ),
-                FlatButton(
-                  child: const Text('LISTEN'),
-                  onPressed: () {
-                    /* ... */
-                  },
-                ),
+        child: ExpansionTile(
+          initiallyExpanded: false,
+          title: Text("Pieter's Pizza "),
+          subtitle: Text("test"),
+          trailing: Text("350 TWD"),
+          backgroundColor: Color(0xfff5f5f5),
+          children: [
+            Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                  width: 150.0,
+                  height: 150.0,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/images/Food/1.jpeg'),
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  ),
+                )
               ],
-            ),
+            )
           ],
         ),
       ),

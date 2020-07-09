@@ -3,18 +3,19 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:roomserviceapp/page_modules/item_card.dart';
+import 'package:roomserviceapp/classes/menu_items.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:random_color/random_color.dart';
 
-class Drink extends StatefulWidget {
+class Menu extends StatefulWidget {
   @override
-  _DrinkState createState() => _DrinkState();
+  _MenuState createState() => _MenuState();
 }
 
-class _DrinkState extends State<Drink> {
+class _MenuState extends State<Menu> {
   Image foodImage;
-  Image dessertImage;
+  Image drinkImage;
 
   @override
   void initState() {
@@ -23,7 +24,7 @@ class _DrinkState extends State<Drink> {
     foodImage = Image.asset('assets/images/food.jpeg',
         fit: BoxFit.cover);
 
-    dessertImage = Image.asset('assets/images/dessert.jpeg',
+    drinkImage = Image.asset('assets/images/drink.jpeg',
         fit: BoxFit.cover);
   }
 
@@ -32,7 +33,7 @@ class _DrinkState extends State<Drink> {
     super.didChangeDependencies();
 
     precacheImage(foodImage.image, context);
-    precacheImage(dessertImage.image, context);
+    precacheImage(drinkImage.image, context);
   }
 
   @override
@@ -74,9 +75,9 @@ class _DrinkState extends State<Drink> {
           expandedHeight: 70,
           flexibleSpace: FlexibleSpaceBar(
             //collapseMode: CollapseMode.parallax,
-            title: Text("Dessert"),
+            title: Text("Drink"),
             background: ImageFiltered(
-              child: dessertImage,
+              child: drinkImage,
               imageFilter: ImageFilter.blur(
                 sigmaX: 1,
                 sigmaY: 1,
@@ -87,10 +88,10 @@ class _DrinkState extends State<Drink> {
         ),
         SliverList(
           delegate: SliverChildBuilderDelegate(
-            (builder, index) {
-              return Text("Test $index");
+                (builder, index) {
+              return StoreItem(itemType: "Drink", index: index);
             },
-            childCount: 200,
+            childCount: 10,
           ),
         ),
       ],

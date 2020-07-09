@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:roomserviceapp/pages/dessert.dart';
-import 'package:roomserviceapp/pages/drink.dart';
-import 'package:roomserviceapp/pages/food.dart';
+
+import 'package:roomserviceapp/pages/menu.dart';
+
 
 class Pagecontrol extends StatelessWidget {
   @override
@@ -9,7 +9,7 @@ class Pagecontrol extends StatelessWidget {
     return PageView(
       children: <Widget>[
         //Food(),
-        Drink(),
+        Menu(),
         //Dessert(),
       ],
     );

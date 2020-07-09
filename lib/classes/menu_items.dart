@@ -14,7 +14,7 @@ class MenuItem {
   });
 }
 
-  final List<MenuItem> foodList = [
+final List<MenuItem> foodList = [
     MenuItem(
       type: "food",
       name: "Indian-Style Beef Curry and Coconut Milk with Rice",
@@ -105,9 +105,10 @@ class MenuItem {
       name: "Chef's Salad",
       price: 380,
       imageNumber: 16,
-    ),];
+    ),
+  ];
 
-final List<MenuItem> dessertList = [
+  final List<MenuItem> dessertList = [
     MenuItem(
       type: "dessert",
       name: "Classic Baked Cheesecake with Strawberry Topping",
@@ -119,9 +120,10 @@ final List<MenuItem> dessertList = [
       name: "French Dessert Set",
       price: 200,
       imageNumber: 2,
-    ),];
+    ),
+  ];
 
-final List<MenuItem> drinkList = [
+  final List<MenuItem> drinkList = [
     MenuItem(
       type: "drink",
       name: "Regular Coffee",
@@ -261,4 +263,5 @@ final List<MenuItem> drinkList = [
       imageNumber: 18,
     ),
   ];
+
 
