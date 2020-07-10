@@ -57,12 +57,15 @@ class _MenuState extends State<Menu> {
           ),
         ),
         SliverList(
-          delegate: SliverChildBuilderDelegate((builder, index) {
-            return StoreItem(
-              index: index,
-              list: foodList,
-            );
-          }, childCount: foodList.length),
+          delegate: SliverChildBuilderDelegate(
+            (builder, index) {
+              return StoreItem(
+                index: index,
+                list: foodList,
+              );
+            },
+            childCount: foodList.length,
+          ),
         ),
         SliverAppBar(
           pinned: true,
@@ -81,13 +84,12 @@ class _MenuState extends State<Menu> {
           ),
         ),
         SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (builder, index) {
-              return StoreItem(
-                index: index,
-                list: drinkList,
-              );
-            }, childCount: drinkList.length),
+          delegate: SliverChildBuilderDelegate((builder, index) {
+            return StoreItem(
+              index: index,
+              list: drinkList,
+            );
+          }, childCount: drinkList.length),
         ),
       ],
     );

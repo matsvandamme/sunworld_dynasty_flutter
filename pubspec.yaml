@@ -53,9 +53,9 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/images/Food/
-    - assets/images/Dessert/
-    - assets/images/Drink/
+    - assets/images/food/
+    - assets/images/dessert/
+    - assets/images/drink/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

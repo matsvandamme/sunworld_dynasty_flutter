@@ -15,7 +15,7 @@ class StoreItem extends StatefulWidget {
 class _StoreItemState extends State<StoreItem> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Container(
       child: Card(
         child: ExpansionTile(
           initiallyExpanded: false,
@@ -27,14 +27,14 @@ class _StoreItemState extends State<StoreItem> {
             Row(
               children: [
                 Container(
-                  margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                  margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
                   width: 150.0,
                   height: 150.0,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
-                          'assets/images/Food/${widget.index + 1}.jpeg'),
+                          'assets/images/${widget.list[widget.index].type}/${widget.list[widget.index].imageNumber}.jpeg'),
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                   ),

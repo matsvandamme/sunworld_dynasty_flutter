@@ -31,7 +31,7 @@ class App extends StatelessWidget {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomBar(),
-        body: Backdrop(),
+        body: Center(child: Backdrop()),
       ),
     );
   }
