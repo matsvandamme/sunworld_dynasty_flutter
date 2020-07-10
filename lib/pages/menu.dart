@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:roomserviceapp/page_modules/item_card.dart';
+import 'package:roomserviceapp/classes/menu_items.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -16,11 +17,9 @@ class _MenuState extends State<Menu> {
   void initState() {
     // adjust the provider based on the image type
     super.initState();
-    foodImage = Image.asset('assets/images/food.jpeg',
-        fit: BoxFit.cover);
+    foodImage = Image.asset('assets/images/food.jpeg', fit: BoxFit.cover);
 
-    drinkImage = Image.asset('assets/images/drink.jpeg',
-        fit: BoxFit.cover);
+    drinkImage = Image.asset('assets/images/drink.jpeg', fit: BoxFit.cover);
   }
 
   @override
@@ -58,12 +57,13 @@ class _MenuState extends State<Menu> {
           ),
         ),
         SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (builder, index) {
+          delegate: SliverChildBuilderDelegate((builder, index) {
+            if (menuList[index].type == "food") {
               return StoreItem(index: index);
-            },
-            childCount: 10,
-          ),
+            } else {
+              return null;
+            }
+          }),
         ),
         /*SliverAppBar(
           pinned: true,
