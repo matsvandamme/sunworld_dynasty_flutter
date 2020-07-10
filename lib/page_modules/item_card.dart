@@ -1,21 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:roomserviceapp/classes/menu_items.dart';
 
-class StoreItem extends StatelessWidget {
-  final String itemType;
+class StoreItem extends StatefulWidget {
   final int index;
 
-  StoreItem({@required this.itemType, @required this.index});
+  const StoreItem({Key key, this.index}) : super(key: key);
 
+  @override
+  _StoreItemState createState() => _StoreItemState();
+}
+
+class _StoreItemState extends State<StoreItem> {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Card(
         child: ExpansionTile(
           initiallyExpanded: false,
-          title: Text("Pieter's Pizza "),
-          subtitle: Text("test"),
-          trailing: Text("350 TWD"),
+          title: Text(menuList[widget.index].name),
+          subtitle: Text(""),
+          leading: Text("${menuList[widget.index].price.toStringAsFixed(0)} TWD"),
           backgroundColor: Color(0xfff5f5f5),
           children: [
             Row(
@@ -26,12 +31,13 @@ class StoreItem extends StatelessWidget {
                   height: 150.0,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('assets/images/Food/1.jpeg'),
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                          'assets/images/Food/${widget.index + 1}.jpeg'),
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                   ),
-                )
+                ),
               ],
             )
           ],

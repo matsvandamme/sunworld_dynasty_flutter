@@ -1,12 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 import 'package:roomserviceapp/page_modules/item_card.dart';
-import 'package:roomserviceapp/classes/menu_items.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:sticky_headers/sticky_headers.dart';
-import 'package:random_color/random_color.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -65,12 +60,12 @@ class _MenuState extends State<Menu> {
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (builder, index) {
-              return StoreItem(itemType: "Food", index: index);
+              return StoreItem(index: index);
             },
             childCount: 10,
           ),
         ),
-        SliverAppBar(
+        /*SliverAppBar(
           pinned: true,
           expandedHeight: 70,
           flexibleSpace: FlexibleSpaceBar(
@@ -89,11 +84,11 @@ class _MenuState extends State<Menu> {
         SliverList(
           delegate: SliverChildBuilderDelegate(
                 (builder, index) {
-              return StoreItem(itemType: "Drink", index: index);
+              return StoreItem(index: index);
             },
             childCount: 10,
           ),
-        ),
+        ),*/
       ],
     );
   }
