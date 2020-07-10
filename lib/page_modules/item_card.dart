@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:roomserviceapp/classes/menu_items.dart';
 
 class StoreItem extends StatefulWidget {
@@ -21,12 +22,24 @@ class _StoreItemState extends State<StoreItem> {
           borderRadius: BorderRadius.circular(10.0),
         ),
         color: Color(0xffaf002c),
-        elevation: 5,
+        elevation: 10,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              leading: Icon(Icons.album, size: 70),
+              leading: Container(
+                constraints: BoxConstraints.tight(Size(60, 60)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: ClipRRect(borderRadius: BorderRadius.circular(5),
+                  child: Image(
+                    image: AssetImage(
+                        'assets/images/${widget.list[widget.index].type}/${widget.list[widget.index].imageNumber}.jpeg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
               title: Text(
                 widget.list[widget.index].name,
                 style: TextStyle(color: Colors.white),
