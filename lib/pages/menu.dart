@@ -37,7 +37,7 @@ class _MenuState extends State<Menu> {
       slivers: <Widget>[
         SliverAppBar(
           pinned: true,
-          expandedHeight: 70,
+          expandedHeight: 150,
           flexibleSpace: FlexibleSpaceBar(
             //collapseMode: CollapseMode.parallax,
             title: Text("Food"),
@@ -69,7 +69,7 @@ class _MenuState extends State<Menu> {
         ),
         SliverAppBar(
           pinned: true,
-          expandedHeight: 70,
+          expandedHeight: 150,
           flexibleSpace: FlexibleSpaceBar(
             //collapseMode: CollapseMode.parallax,
             title: Text("Drink"),

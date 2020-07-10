@@ -6,7 +6,7 @@ class StoreItem extends StatefulWidget {
   final int index;
   final List list;
 
-  const StoreItem({Key key, this.index,this.list}) : super(key: key);
+  const StoreItem({Key key, this.index, this.list}) : super(key: key);
 
   @override
   _StoreItemState createState() => _StoreItemState();
@@ -17,10 +17,45 @@ class _StoreItemState extends State<StoreItem> {
   Widget build(BuildContext context) {
     return Container(
       child: Card(
-        child: ExpansionTile(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            color: Color(0xffaf002c),
+            elevation: 5,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const ListTile(
+                  leading: Icon(Icons.album, size: 70),
+                  title: Text('Heart Shaker',
+                      style: TextStyle(color: Colors.white)),
+                  subtitle:
+                      Text('TWICE', style: TextStyle(color: Colors.white)),
+                ),
+                ButtonTheme.bar(
+                  child: ButtonBar(
+                    children: <Widget>[
+                      FlatButton(
+                        child: const Text('Edit',
+                            style: TextStyle(color: Colors.white)),
+                        onPressed: () {},
+                      ),
+                      FlatButton(
+                        child: const Text('Delete',
+                            style: TextStyle(color: Colors.white)),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+        /*ExpansionTile(
           initiallyExpanded: false,
           title: Text(widget.list[widget.index].name),
-          subtitle: Text(""),
+          subtitle: Text("Test"),
           leading: Text("${widget.list[widget.index].price.toStringAsFixed(0)} TWD"),
           backgroundColor: Color(0xfff5f5f5),
           children: [
@@ -42,8 +77,8 @@ class _StoreItemState extends State<StoreItem> {
               ],
             )
           ],
-        ),
-      ),
-    );
+        ),*/
+
+
   }
 }
