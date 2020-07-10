@@ -17,42 +17,47 @@ class _StoreItemState extends State<StoreItem> {
   Widget build(BuildContext context) {
     return Container(
       child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        color: Color(0xffaf002c),
+        elevation: 5,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.album, size: 70),
+              title: Text(
+                widget.list[widget.index].name,
+                style: TextStyle(color: Colors.white),
+              ),
+              subtitle: Text(
+                "${widget.list[widget.index].price.toStringAsFixed(0)} TWD",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
-            color: Color(0xffaf002c),
-            elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album, size: 70),
-                  title: Text('Heart Shaker',
-                      style: TextStyle(color: Colors.white)),
-                  subtitle:
-                      Text('TWICE', style: TextStyle(color: Colors.white)),
-                ),
-                ButtonTheme.bar(
-                  child: ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        child: const Text('Edit',
-                            style: TextStyle(color: Colors.white)),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        child: const Text('Delete',
-                            style: TextStyle(color: Colors.white)),
-                        onPressed: () {},
-                      ),
-                    ],
+            ButtonBarTheme(
+              data: ButtonBarThemeData(),
+              child: ButtonBar(
+                children: <Widget>[
+                  FlatButton(
+                    child: const Text('Edit',
+                        style: TextStyle(color: Colors.white)),
+                    onPressed: () {},
                   ),
-                ),
-              ],
+                  FlatButton(
+                    child: const Text('Delete',
+                        style: TextStyle(color: Colors.white)),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
             ),
-          ),
-        );
-        /*ExpansionTile(
+          ],
+        ),
+      ),
+    );
+    /*ExpansionTile(
           initiallyExpanded: false,
           title: Text(widget.list[widget.index].name),
           subtitle: Text("Test"),
@@ -78,7 +83,5 @@ class _StoreItemState extends State<StoreItem> {
             )
           ],
         ),*/
-
-
   }
 }
