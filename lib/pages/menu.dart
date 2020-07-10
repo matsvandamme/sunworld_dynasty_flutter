@@ -58,14 +58,13 @@ class _MenuState extends State<Menu> {
         ),
         SliverList(
           delegate: SliverChildBuilderDelegate((builder, index) {
-            if (menuList[index].type == "food") {
-              return StoreItem(index: index);
-            } else {
-              return null;
-            }
-          }),
+            return StoreItem(
+              index: index,
+              list: foodList,
+            );
+          }, childCount: foodList.length),
         ),
-        /*SliverAppBar(
+        SliverAppBar(
           pinned: true,
           expandedHeight: 70,
           flexibleSpace: FlexibleSpaceBar(
@@ -83,12 +82,13 @@ class _MenuState extends State<Menu> {
         ),
         SliverList(
           delegate: SliverChildBuilderDelegate(
-                (builder, index) {
-              return StoreItem(index: index);
-            },
-            childCount: 10,
-          ),
-        ),*/
+            (builder, index) {
+              return StoreItem(
+                index: index,
+                list: drinkList,
+              );
+            }, childCount: drinkList.length),
+        ),
       ],
     );
   }

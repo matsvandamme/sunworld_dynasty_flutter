@@ -4,8 +4,9 @@ import 'package:roomserviceapp/classes/menu_items.dart';
 
 class StoreItem extends StatefulWidget {
   final int index;
+  final List list;
 
-  const StoreItem({Key key, this.index}) : super(key: key);
+  const StoreItem({Key key, this.index,this.list}) : super(key: key);
 
   @override
   _StoreItemState createState() => _StoreItemState();
@@ -18,9 +19,9 @@ class _StoreItemState extends State<StoreItem> {
       child: Card(
         child: ExpansionTile(
           initiallyExpanded: false,
-          title: Text(menuList[widget.index].name),
+          title: Text(widget.list[widget.index].name),
           subtitle: Text(""),
-          leading: Text("${menuList[widget.index].price.toStringAsFixed(0)} TWD"),
+          leading: Text("${widget.list[widget.index].price.toStringAsFixed(0)} TWD"),
           backgroundColor: Color(0xfff5f5f5),
           children: [
             Row(
