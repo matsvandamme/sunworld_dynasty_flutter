@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:backdrop/backdrop.dart';
+import 'package:roomserviceapp/page_modules/page_indicator.dart';
 import 'package:roomserviceapp/page_modules/page_view.dart';
 import 'package:roomserviceapp/pages/food_menu.dart';
 
@@ -73,6 +74,7 @@ class _BackdropPageState extends State<Backdrop>
                   child: new Center(
                     child: Stack(children: [
                       new PageViewWidget(),
+                      new PageIndicator(),
                     ]),
                   ),
                 )

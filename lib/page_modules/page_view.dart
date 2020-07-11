@@ -3,6 +3,9 @@ import 'package:roomserviceapp/external_packages/utils.dart';
 import 'package:roomserviceapp/pages/dessert_menu.dart';
 import 'package:roomserviceapp/pages/drinks_menu.dart';
 import 'package:roomserviceapp/pages/food_menu.dart';
+import 'package:page_view_indicators/circle_page_indicator.dart';
+
+var _currentPageNotifier = ValueNotifier<int>(0);
 
 class PageViewWidget extends StatefulWidget {
   @override
@@ -27,10 +30,12 @@ class _PageViewWidgetState extends State<PageViewWidget> {
       key: _scaffoldKey,
       ///A Page View with 3 children
       body: PageView(
+        onPageChanged: (int index) {
+          _currentPageNotifier.value = index;
+        },
         physics: BouncingScrollPhysics(),
         controller: controller,
         scrollDirection: scrollDirection,
-
         ///Enable physics property to provide your PageView with a
         ///custom scroll behaviour
         ///Here BouncingScrollPhysics will pull back the boundary
@@ -72,6 +77,30 @@ class _PageViewWidgetState extends State<PageViewWidget> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class PageIndicator extends StatefulWidget {
+  @override
+  _PageIndicatorState createState() => _PageIndicatorState();
+}
+
+class _PageIndicatorState extends State<PageIndicator> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      left: 0.0,
+      right: 0.0,
+      bottom: 0.0,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: CirclePageIndicator(
+          itemCount: 3,
+          currentPageNotifier: _currentPageNotifier,
+        ),
       ),
     );
   }
