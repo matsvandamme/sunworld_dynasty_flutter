@@ -71,7 +71,9 @@ class _BackdropPageState extends State<Backdrop>
                 ),*/
                 new Expanded(
                   child: new Center(
-                    child: new PageViewWidget(),
+                    child: Stack(children: [
+                      new PageViewWidget(),
+                    ]),
                   ),
                 )
               ]),
