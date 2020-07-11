@@ -68,7 +68,11 @@ class _BackdropPageState extends State<Backdrop>
                   height: _PANEL_HEADER_HEIGHT,
                   child: new Center(child: new Text("panel")),
                 ),*/
-                new Expanded(child: new Center(child: new Menu()))
+                new Expanded(
+                  child: new Center(
+                    child: new Menu(),
+                  ),
+                ),
               ]),
             ),
           ),
@@ -99,9 +103,6 @@ class _BackdropPageState extends State<Backdrop>
     );
   }
 }
-
-
-
 
 /*class Backdrop extends StatelessWidget {
   @override

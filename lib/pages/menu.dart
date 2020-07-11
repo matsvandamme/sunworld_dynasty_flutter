@@ -72,7 +72,7 @@ class _MenuState extends State<Menu> {
           expandedHeight: 150,
           flexibleSpace: FlexibleSpaceBar(
             //collapseMode: CollapseMode.parallax,
-            title: Text("Drink"),
+            title: Text("Drinks"),
             background: ImageFiltered(
               child: drinkImage,
               imageFilter: ImageFilter.blur(
