@@ -4,26 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:roomserviceapp/page_modules/item_card.dart';
 import 'package:roomserviceapp/classes/menu_items.dart';
 
-class DrinksMenu extends StatefulWidget {
+class DessertMenu extends StatefulWidget {
   @override
-  _DrinksMenuState createState() => _DrinksMenuState();
+  _DessertMenuState createState() => _DessertMenuState();
 }
 
-class _DrinksMenuState extends State<DrinksMenu> {
-  Image drinkImage;
+class _DessertMenuState extends State<DessertMenu> {
+  Image dessertImage;
 
   @override
   void initState() {
     // adjust the provider based on the image type
     super.initState();
-    drinkImage = Image.asset('assets/images/drink.jpeg', fit: BoxFit.cover);
+    dessertImage = Image.asset('assets/images/dessert.jpeg', fit: BoxFit.cover);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    precacheImage(drinkImage.image, context);
+    precacheImage(dessertImage.image, context);
   }
 
   @override
@@ -36,24 +36,32 @@ class _DrinksMenuState extends State<DrinksMenu> {
           expandedHeight: 150,
           flexibleSpace: FlexibleSpaceBar(
             //collapseMode: CollapseMode.parallax,
-            title: Text("Drinks"),
+            title: Text("Desserts"),
             background: ImageFiltered(
-              child: drinkImage,
+              child: dessertImage,
               imageFilter: ImageFilter.blur(
                 sigmaX: 1,
                 sigmaY: 1,
               ),
             ),
             //centerTitle: true,
+            stretchModes: <StretchMode>[
+              StretchMode.zoomBackground,
+              StretchMode.blurBackground,
+              StretchMode.fadeTitle,
+            ],
           ),
         ),
         SliverList(
-          delegate: SliverChildBuilderDelegate((builder, index) {
-            return StoreItem(
-              index: index,
-              list: drinkList,
-            );
-          }, childCount: drinkList.length),
+          delegate: SliverChildBuilderDelegate(
+                (builder, index) {
+              return StoreItem(
+                index: index,
+                list: dessertList,
+              );
+            },
+            childCount: dessertList.length,
+          ),
         ),
       ],
     );

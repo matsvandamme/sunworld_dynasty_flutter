@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roomserviceapp/external_packages/utils.dart';
+import 'package:roomserviceapp/pages/dessert_menu.dart';
+import 'package:roomserviceapp/pages/drinks_menu.dart';
 import 'package:roomserviceapp/pages/food_menu.dart';
 
 class PageViewWidget extends StatefulWidget {
@@ -9,7 +11,8 @@ class PageViewWidget extends StatefulWidget {
 
 class _PageViewWidgetState extends State<PageViewWidget> {
   static final GlobalKey<ScaffoldState> _scaffoldKey =
-  GlobalKey<ScaffoldState>();
+      GlobalKey<ScaffoldState>();
+
   ///Page Controller for the PageView
   final controller = PageController(
     initialPage: 0,
@@ -24,8 +27,10 @@ class _PageViewWidgetState extends State<PageViewWidget> {
       key: _scaffoldKey,
       ///A Page View with 3 children
       body: PageView(
+        physics: BouncingScrollPhysics(),
         controller: controller,
         scrollDirection: scrollDirection,
+
         ///Enable physics property to provide your PageView with a
         ///custom scroll behaviour
         ///Here BouncingScrollPhysics will pull back the boundary
@@ -48,33 +53,21 @@ class _PageViewWidgetState extends State<PageViewWidget> {
             color: Colors.white,
             child: Card(
               color: Colors.white,
-              elevation: 4,
+              elevation: 0,
               margin: EdgeInsets.all(0),
               child: Center(
-                child: Text(
-                  "Card 2",
-                  style: TextStyle(
-                      fontFamily: Utils.ubuntuRegularFont,
-                      color: Colors.white,
-                      fontSize: 24),
-                ),
+                child: DrinksMenu(),
               ),
             ),
           ),
           Container(
             color: Colors.white,
             child: Card(
-              color: Colors.pink,
-              elevation: 4,
-              margin: EdgeInsets.all(15),
+              color: Color(0xffeeeeee),
+              elevation: 0,
+              margin: EdgeInsets.all(0),
               child: Center(
-                child: Text(
-                  "Card 3",
-                  style: TextStyle(
-                      fontFamily: Utils.ubuntuRegularFont,
-                      color: Colors.white,
-                      fontSize: 24),
-                ),
+                child: DessertMenu(),
               ),
             ),
           ),

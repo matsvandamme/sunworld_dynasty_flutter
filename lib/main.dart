@@ -20,9 +20,11 @@ class App extends StatelessWidget {
         primaryColor: Color(0xff780003),
         accentColor: Color(0xff424242),
       ),
-      home: Scaffold(
-        body: Center(
-          child: Backdrop(),
+      home: SafeArea(
+        child: Scaffold(
+          body: Center(
+            child: Backdrop(),
+          ),
         ),
       ),
     );
