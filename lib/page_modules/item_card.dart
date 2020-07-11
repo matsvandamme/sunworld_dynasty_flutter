@@ -54,12 +54,12 @@ class _StoreItemState extends State<StoreItem> {
               child: ButtonBar(
                 children: <Widget>[
                   FlatButton(
-                    child: const Text('Edit',
+                    child: const Text('Info',
                         style: TextStyle(color: Colors.white)),
                     onPressed: () {},
                   ),
                   FlatButton(
-                    child: const Text('Delete',
+                    child: const Text('Add to cart',
                         style: TextStyle(color: Colors.white)),
                     onPressed: () {},
                   ),
