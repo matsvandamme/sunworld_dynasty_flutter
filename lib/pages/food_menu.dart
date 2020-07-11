@@ -4,22 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:roomserviceapp/page_modules/item_card.dart';
 import 'package:roomserviceapp/classes/menu_items.dart';
 
-class Menu extends StatefulWidget {
+class FoodMenu extends StatefulWidget {
   @override
-  _MenuState createState() => _MenuState();
+  _FoodMenuState createState() => _FoodMenuState();
 }
 
-class _MenuState extends State<Menu> {
+class _FoodMenuState extends State<FoodMenu> {
   Image foodImage;
-  Image drinkImage;
 
   @override
   void initState() {
     // adjust the provider based on the image type
     super.initState();
     foodImage = Image.asset('assets/images/food.jpeg', fit: BoxFit.cover);
-
-    drinkImage = Image.asset('assets/images/drink.jpeg', fit: BoxFit.cover);
   }
 
   @override
@@ -27,7 +24,6 @@ class _MenuState extends State<Menu> {
     super.didChangeDependencies();
 
     precacheImage(foodImage.image, context);
-    precacheImage(drinkImage.image, context);
   }
 
   @override
@@ -36,7 +32,7 @@ class _MenuState extends State<Menu> {
       physics: const BouncingScrollPhysics(),
       slivers: <Widget>[
         SliverAppBar(
-          pinned: true,
+          pinned: false,
           expandedHeight: 150,
           flexibleSpace: FlexibleSpaceBar(
             //collapseMode: CollapseMode.parallax,
@@ -66,30 +62,6 @@ class _MenuState extends State<Menu> {
             },
             childCount: foodList.length,
           ),
-        ),
-        SliverAppBar(
-          pinned: true,
-          expandedHeight: 150,
-          flexibleSpace: FlexibleSpaceBar(
-            //collapseMode: CollapseMode.parallax,
-            title: Text("Drink"),
-            background: ImageFiltered(
-              child: drinkImage,
-              imageFilter: ImageFilter.blur(
-                sigmaX: 1,
-                sigmaY: 1,
-              ),
-            ),
-            //centerTitle: true,
-          ),
-        ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate((builder, index) {
-            return StoreItem(
-              index: index,
-              list: drinkList,
-            );
-          }, childCount: drinkList.length),
         ),
       ],
     );
