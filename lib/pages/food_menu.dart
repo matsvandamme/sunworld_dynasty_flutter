@@ -10,13 +10,13 @@ class FoodMenu extends StatefulWidget {
 }
 
 class _FoodMenuState extends State<FoodMenu> {
-  Image foodImage;
+
+  final foodImage = Image.asset('assets/images/food.jpeg', fit: BoxFit.cover);
 
   @override
   void initState() {
     // adjust the provider based on the image type
     super.initState();
-    foodImage = Image.asset('assets/images/food.jpeg', fit: BoxFit.cover);
   }
 
   @override

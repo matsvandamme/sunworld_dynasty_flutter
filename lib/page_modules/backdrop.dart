@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:backdrop/backdrop.dart';
-import 'package:roomserviceapp/page_modules/page_indicator.dart';
+import 'package:roomserviceapp/pages/cart.dart';
 import 'package:roomserviceapp/page_modules/page_view.dart';
-import 'package:roomserviceapp/pages/food_menu.dart';
-
-import 'package:flutter/material.dart';
 
 class Backdrop extends StatefulWidget {
   Backdrop({Key key}) : super(key: key);
@@ -56,7 +52,7 @@ class _BackdropPageState extends State<Backdrop>
       child: new Stack(
         children: <Widget>[
           new Center(
-            child: new Text("base"),
+            child: new Cart(),
           ),
           new PositionedTransition(
             rect: animation,
@@ -91,18 +87,18 @@ class _BackdropPageState extends State<Backdrop>
     return new Scaffold(
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
-            canvasColor: Colors.blueAccent,
+            canvasColor: Color(0xff780003),
             primaryColor: Colors.white30,
             textTheme: Theme.of(context)
                 .textTheme
                 .copyWith(caption: new TextStyle(color: Colors.white))),
         child: BottomNavigationBar(
           currentIndex: 0, // Set the value of _currentIndex to currentIndex
-          onTap: null,       // Set the onTabTapped function we creatd earlier
+          onTap: null,       // Set the onTabTapped function we created earlier
           items: [
             BottomNavigationBarItem(
-              icon: new Icon(Icons.playlist_add),
-              title: new Text("Playlist"),
+              icon: new Icon(Icons.fastfood),
+              title: new Text("Menu"),
             ),
             BottomNavigationBarItem(
                 icon: new Icon(Icons.person), title: new Text("My Profile")),

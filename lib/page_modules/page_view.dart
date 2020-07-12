@@ -97,7 +97,7 @@ class _PageIndicatorState extends State<PageIndicator> {
     return Positioned(
       left: 0.0,
       right: 0.0,
-      bottom: 15.0,
+      bottom: 4.0,
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
