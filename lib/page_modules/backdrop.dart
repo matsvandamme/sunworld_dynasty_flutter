@@ -89,6 +89,28 @@ class _BackdropPageState extends State<Backdrop>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+            canvasColor: Colors.blueAccent,
+            primaryColor: Colors.white30,
+            textTheme: Theme.of(context)
+                .textTheme
+                .copyWith(caption: new TextStyle(color: Colors.white))),
+        child: BottomNavigationBar(
+          currentIndex: 0, // Set the value of _currentIndex to currentIndex
+          onTap: null,       // Set the onTabTapped function we creatd earlier
+          items: [
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.playlist_add),
+              title: new Text("Playlist"),
+            ),
+            BottomNavigationBarItem(
+                icon: new Icon(Icons.person), title: new Text("My Profile")),
+            BottomNavigationBarItem(
+                icon: new Icon(Icons.mail), title: new Text("Inbox"))
+          ],
+        ),
+      ),
       appBar: new AppBar(
         elevation: 0.0,
         title: new Text("Sunworld Dynasty Hotel"),
