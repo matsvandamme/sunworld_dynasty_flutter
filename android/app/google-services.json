@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "881700417352",
+    "firebase_url": "https://roomserviceswd-c65a7.firebaseio.com",
+    "project_id": "roomserviceswd-c65a7",
+    "storage_bucket": "roomserviceswd-c65a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881700417352:android:9df23c597aff488cbdcd7d",
+        "android_client_info": {
+          "package_name": "com.example.roomserviceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881700417352-ode67tr3j8mhk6ckapl5an0clujbtsv6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzh4gCFjvW--XP7oo6ahHkKRYcJ6Ij8uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881700417352-ode67tr3j8mhk6ckapl5an0clujbtsv6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

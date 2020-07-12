@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomserviceapp/page_modules/page_view.dart';
+import 'package:roomserviceapp/pages/login.dart';
 
 class Backdrop extends StatefulWidget {
   Backdrop({Key key}) : super(key: key);
@@ -19,7 +20,7 @@ class _BackdropPageState extends State<Backdrop>
       new PageIndicator(),
     ]),
     null,
-    null
+    null,
   ];
 
   void onTabTapped(int index) {
@@ -105,7 +106,6 @@ class _BackdropPageState extends State<Backdrop>
                 .textTheme
                 .copyWith(caption: new TextStyle(color: Colors.white))),
         child: BottomNavigationBar(
-          //Todo: BottomNavigationBar functionaliteit moet naar aparte widget
           currentIndex: _currentIndex,
           // Set the value of _currentIndex to currentIndex
           onTap: onTabTapped,
