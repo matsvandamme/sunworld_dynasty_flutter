@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:backdrop/backdrop.dart';
-import 'package:roomserviceapp/page_modules/page_indicator.dart';
 import 'package:roomserviceapp/page_modules/page_view.dart';
-import 'package:roomserviceapp/pages/food_menu.dart';
-
-import 'package:flutter/material.dart';
+import 'package:roomserviceapp/pages/login.dart';
 
 class Backdrop extends StatefulWidget {
   Backdrop({Key key}) : super(key: key);
@@ -16,6 +12,22 @@ class Backdrop extends StatefulWidget {
 class _BackdropPageState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   static const _PANEL_HEADER_HEIGHT = 32.0;
+
+  int _currentIndex = 0;
+  final List<Widget> _children = [
+    Stack(children: [
+      new PageViewWidget(),
+      new PageIndicator(),
+    ]),
+    null,
+    null,
+  ];
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   AnimationController _controller;
 
@@ -56,7 +68,7 @@ class _BackdropPageState extends State<Backdrop>
       child: new Stack(
         children: <Widget>[
           new Center(
-            child: new Text("base"),
+            child: Text('$_currentIndex'),
           ),
           new PositionedTransition(
             rect: animation,
@@ -72,10 +84,7 @@ class _BackdropPageState extends State<Backdrop>
                 ),*/
                 new Expanded(
                   child: new Center(
-                    child: Stack(children: [
-                      new PageViewWidget(),
-                      new PageIndicator(),
-                    ]),
+                    child: _children[_currentIndex],
                   ),
                 )
               ]),
@@ -89,6 +98,34 @@ class _BackdropPageState extends State<Backdrop>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+            canvasColor: Color(0xff780003),
+            primaryColor: Colors.white30,
+            textTheme: Theme.of(context)
+                .textTheme
+                .copyWith(caption: new TextStyle(color: Colors.white))),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          // Set the value of _currentIndex to currentIndex
+          onTap: onTabTapped,
+          // Set the onTabTapped function we created earlier
+          items: [
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.fastfood),
+              title: new Text("Menu"),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.person),
+              title: new Text("My Profile"),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.chat),
+              title: new Text("Frontdesk"),
+            )
+          ],
+        ),
+      ),
       appBar: new AppBar(
         elevation: 0.0,
         title: new Text("Sunworld Dynasty Hotel"),
