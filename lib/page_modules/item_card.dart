@@ -54,12 +54,12 @@ class _StoreItemState extends State<StoreItem> {
               child: ButtonBar(
                 children: <Widget>[
                   FlatButton(
-                    child: const Text('Edit',
+                    child: const Text('Info',
                         style: TextStyle(color: Colors.white)),
                     onPressed: () {},
                   ),
                   FlatButton(
-                    child: const Text('Delete',
+                    child: const Text('Add to cart',
                         style: TextStyle(color: Colors.white)),
                     onPressed: () {},
                   ),
@@ -70,31 +70,5 @@ class _StoreItemState extends State<StoreItem> {
         ),
       ),
     );
-    /*ExpansionTile(
-          initiallyExpanded: false,
-          title: Text(widget.list[widget.index].name),
-          subtitle: Text("Test"),
-          leading: Text("${widget.list[widget.index].price.toStringAsFixed(0)} TWD"),
-          backgroundColor: Color(0xfff5f5f5),
-          children: [
-            Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                  width: 150.0,
-                  height: 150.0,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(
-                          'assets/images/${widget.list[widget.index].type}/${widget.list[widget.index].imageNumber}.jpeg'),
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),*/
   }
 }

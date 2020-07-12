@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:backdrop/backdrop.dart';
-import 'package:roomserviceapp/pages/menu.dart';
+import 'package:roomserviceapp/page_modules/page_indicator.dart';
+import 'package:roomserviceapp/page_modules/page_view.dart';
+import 'package:roomserviceapp/pages/food_menu.dart';
 
 import 'package:flutter/material.dart';
 
@@ -70,9 +72,12 @@ class _BackdropPageState extends State<Backdrop>
                 ),*/
                 new Expanded(
                   child: new Center(
-                    child: new Menu(),
+                    child: Stack(children: [
+                      new PageViewWidget(),
+                      new PageIndicator(),
+                    ]),
                   ),
-                ),
+                )
               ]),
             ),
           ),
@@ -103,18 +108,3 @@ class _BackdropPageState extends State<Backdrop>
     );
   }
 }
-
-/*class Backdrop extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BackdropScaffold(
-      animationCurve: Curves.easeInOutBack,
-      title: Text("Sunworld Dynasty Hotel Taipei"),
-      backLayer: Container(
-        child: null,
-      ),
-      iconPosition: BackdropIconPosition.action,
-      frontLayer: Menu(),
-    );
-  }
-}*/

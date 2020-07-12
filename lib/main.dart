@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'page_modules/backdrop.dart';
-import 'page_modules/bottomappbar.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -21,16 +20,12 @@ class App extends StatelessWidget {
         primaryColor: Color(0xff780003),
         accentColor: Color(0xff424242),
       ),
-      home: Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          elevation: 5,
-          icon: const Icon(Icons.shopping_cart),
-          label: const Text('Order'),
-          onPressed: () {},
+      home: SafeArea(
+        child: Scaffold(
+          body: Center(
+            child: Backdrop(),
+          ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: BottomBar(),
-        body: Center(child: Backdrop()),
       ),
     );
   }
