@@ -5,12 +5,14 @@ class MenuItem {
   final String name;
   final double price;
   final int imageNumber;
+  final int givenIndex;
 
   MenuItem({
     @required this.type,
     @required this.name,
     @required this.price,
     @required this.imageNumber,
+    this.givenIndex,
   });
 }
 

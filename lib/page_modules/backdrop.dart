@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:roomserviceapp/pages/cart.dart';
 import 'package:roomserviceapp/page_modules/page_view.dart';
 
 class Backdrop extends StatefulWidget {
@@ -12,6 +11,22 @@ class Backdrop extends StatefulWidget {
 class _BackdropPageState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   static const _PANEL_HEADER_HEIGHT = 32.0;
+
+  int _currentIndex = 0;
+  final List<Widget> _children = [
+    Stack(children: [
+      new PageViewWidget(),
+      new PageIndicator(),
+    ]),
+    null,
+    null
+  ];
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   AnimationController _controller;
 
@@ -52,7 +67,7 @@ class _BackdropPageState extends State<Backdrop>
       child: new Stack(
         children: <Widget>[
           new Center(
-            child: new Cart(),
+            child: Text('$_currentIndex'),
           ),
           new PositionedTransition(
             rect: animation,
@@ -68,10 +83,7 @@ class _BackdropPageState extends State<Backdrop>
                 ),*/
                 new Expanded(
                   child: new Center(
-                    child: Stack(children: [
-                      new PageViewWidget(),
-                      new PageIndicator(),
-                    ]),
+                    child: _children[_currentIndex],
                   ),
                 )
               ]),
@@ -93,17 +105,24 @@ class _BackdropPageState extends State<Backdrop>
                 .textTheme
                 .copyWith(caption: new TextStyle(color: Colors.white))),
         child: BottomNavigationBar(
-          currentIndex: 0, // Set the value of _currentIndex to currentIndex
-          onTap: null,       // Set the onTabTapped function we created earlier
+          //Todo: BottomNavigationBar functionaliteit moet naar aparte widget
+          currentIndex: _currentIndex,
+          // Set the value of _currentIndex to currentIndex
+          onTap: onTabTapped,
+          // Set the onTabTapped function we created earlier
           items: [
             BottomNavigationBarItem(
               icon: new Icon(Icons.fastfood),
               title: new Text("Menu"),
             ),
             BottomNavigationBarItem(
-                icon: new Icon(Icons.person), title: new Text("My Profile")),
+              icon: new Icon(Icons.person),
+              title: new Text("My Profile"),
+            ),
             BottomNavigationBarItem(
-                icon: new Icon(Icons.mail), title: new Text("Inbox"))
+              icon: new Icon(Icons.chat),
+              title: new Text("Frontdesk"),
+            )
           ],
         ),
       ),
