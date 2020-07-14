@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:roomserviceapp/page_modules/page_view.dart';
-import 'package:roomserviceapp/pages/login.dart';
 
 class Backdrop extends StatefulWidget {
   Backdrop({Key key}) : super(key: key);
@@ -68,7 +67,7 @@ class _BackdropPageState extends State<Backdrop>
       child: new Stack(
         children: <Widget>[
           new Center(
-            child: Text('$_currentIndex'),
+            child: RaisedButton(onPressed: null),
           ),
           new PositionedTransition(
             rect: animation,
