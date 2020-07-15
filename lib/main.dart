@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'pages/test.dart';
 
 import 'page_modules/backdrop.dart';
 
@@ -26,7 +27,7 @@ class App extends StatelessWidget {
       home: SafeArea(
         child: Scaffold(
           body: Center(
-            child: Backdrop(),
+            child: Test(),
           ),
         ),
       ),
