@@ -40,18 +40,48 @@ class _TestState extends State<Test> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: Container(
-          color: Colors.white,
-          child: LayoutBuilder(
-            // Inner yellow container
-            builder: (_, constraints) => Container(
-              width: constraints.widthConstraints().maxWidth,
-              height: constraints.heightConstraints().maxHeight,
-              color: Colors.white,
-              child: CustomPaint(
-                painter: _MyPainter(),
-              ),
+      home: Scaffold(
+        body: SafeArea(
+          child: Container(
+            color: Colors.white,
+            child: Stack(
+              children: [
+                LayoutBuilder(
+                  // Inner yellow container
+                  builder: (_, constraints) => Container(
+                    width: constraints.widthConstraints().maxWidth,
+                    height: constraints.heightConstraints().maxHeight,
+                    color: Colors.white,
+                    child: CustomPaint(
+                      painter: _MyPainter(),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  //top:0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Testafdsfdfa',
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      Text(
+                        'Testfadf',
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      Text(
+                        'Test',
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      Text(
+                        'Testfdf',
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ),
