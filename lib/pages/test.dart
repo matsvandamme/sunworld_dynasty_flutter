@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
+import 'package:flutter/services.dart';
 
 class Test extends StatefulWidget {
   @override
@@ -12,35 +12,15 @@ class _MyPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Define a paint object
     final paint = Paint()
-      ..style = PaintingStyle.stroke
+      ..style = PaintingStyle.fill
       ..strokeWidth = 4.0
-      ..color = Colors.indigo;
+      ..color = Color(0xffCB1C3F);
 
     // Left eye
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-          Rect.fromLTWH(-20, 40, 100, 100), Radius.circular(20)),
+          Rect.fromLTWH(-200, -200, size.width*1.33, size.height*0.95), Radius.circular(124)),
       paint,);
-//    );
-//    // Right eye
-//    canvas.drawOval(
-//      Rect.fromLTWH(size.width - 120, 40, 100, 100),
-//      paint,
-//    );
-//    // Mouth
-//    final mouth = Path();
-//    mouth.moveTo(size.width * 0.8, size.height * 0.6);
-//    mouth.arcToPoint(
-//      Offset(size.width * 0.2, size.height * 0.6),
-//      radius: Radius.circular(150),
-//    );
-//    mouth.arcToPoint(
-//      Offset(size.width * 0.8, size.height * 0.6),
-//      radius: Radius.circular(200),
-//      clockwise: false,
-//    );
-//
-//    canvas.drawPath(mouth, paint);
   }
 
   @override
@@ -50,35 +30,34 @@ class _MyPainter extends CustomPainter {
 class _TestState extends State<Test> {
   @override
   void initState() {
-    // TODO: implement initState
+    SystemChrome.setEnabledSystemUIOverlays([]);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.lightBlue),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        // Outer white container with padding
-        body: Container(
-          color: Colors.white,
-          child: LayoutBuilder(
-            // Inner yellow container
-            builder: (_, constraints) =>
-                Container(
-                  width: constraints
-                      .widthConstraints()
-                      .maxWidth,
-                  height: constraints
-                      .heightConstraints()
-                      .maxHeight,
-                  color: Colors.yellow,
-                  child: CustomPaint(painter: _MyPainter()),
-                ),
+      home: SafeArea(
+        child: Container(
+            color: Colors.white,
+            child: LayoutBuilder(
+              // Inner yellow container
+              builder: (_, constraints) =>
+                  Container(
+                    width: constraints
+                        .widthConstraints()
+                        .maxWidth,
+                    height: constraints
+                        .heightConstraints()
+                        .maxHeight,
+                    color: Colors.white,
+                    child: CustomPaint(painter: _MyPainter()),
+                  ),
+            ),
           ),
         ),
-      ),
+
     );
   }
 }
