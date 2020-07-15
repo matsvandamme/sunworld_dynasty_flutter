@@ -19,8 +19,10 @@ class _MyPainter extends CustomPainter {
     // Left eye
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-          Rect.fromLTWH(-200, -200, size.width*1.33, size.height*0.95), Radius.circular(124)),
-      paint,);
+          Rect.fromLTWH(-200, -200, size.width * 1.33, size.height * 0.95),
+          Radius.circular(124)),
+      paint,
+    );
   }
 
   @override
@@ -40,24 +42,20 @@ class _TestState extends State<Test> {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Container(
-            color: Colors.white,
-            child: LayoutBuilder(
-              // Inner yellow container
-              builder: (_, constraints) =>
-                  Container(
-                    width: constraints
-                        .widthConstraints()
-                        .maxWidth,
-                    height: constraints
-                        .heightConstraints()
-                        .maxHeight,
-                    color: Colors.white,
-                    child: CustomPaint(painter: _MyPainter()),
-                  ),
+          color: Colors.white,
+          child: LayoutBuilder(
+            // Inner yellow container
+            builder: (_, constraints) => Container(
+              width: constraints.widthConstraints().maxWidth,
+              height: constraints.heightConstraints().maxHeight,
+              color: Colors.white,
+              child: CustomPaint(
+                painter: _MyPainter(),
+              ),
             ),
           ),
         ),
-
+      ),
     );
   }
 }
