@@ -26,8 +26,14 @@ class MyPainter extends CustomPainter {
 
     path.moveTo(0, 0);
     path.lineTo(size.width, 0);
-    path.lineTo(size.width, size.height-radius);
-    path.arcTo(Rect.fromCircle(center: Offset(size.width-radius, size.height-radius),radius: radius), 0, pi/2, false);
+    path.lineTo(size.width, size.height - radius);
+    path.arcTo(
+        Rect.fromCircle(
+            center: Offset(size.width - radius, size.height - radius),
+            radius: radius),
+        0,
+        pi / 2,
+        false);
     path.lineTo(0, size.height);
     path.close();
 
@@ -45,6 +51,10 @@ class _TestState extends State<Test> {
     super.initState();
   }
 
+  double overlayWidthFraction = 0.85;
+  double overlayHeightFraction = 0.65;
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,12 +65,12 @@ class _TestState extends State<Test> {
             builder: (context, constraints) => CustomPaint(
               painter: MyPainter(),
               child: LayoutBuilder(
-                builder: (context, constraints) => LayoutBuilder(
-                  builder: (context, constraints) => Container(
-                    width: constraints.maxWidth * 0.85,
-                    height: constraints.maxHeight * 0.65,
-                    alignment: Alignment.topLeft,
-                    color: Colors.transparent,
+                builder: (context, constraints) => Container(
+                  width: constraints.maxWidth * overlayWidthFraction,
+                  height: constraints.maxHeight * overlayHeightFraction,
+                  child: Container(
+                    color: Colors.blueGrey,
+                    margin: EdgeInsets.fromLTRB(constraints.maxWidth*overlayWidthFraction*0.148, constraints.maxHeight*overlayHeightFraction*0.246, constraints.maxWidth*overlayWidthFraction*0.4, constraints.maxHeight*overlayHeightFraction*0.41),
                   ),
                 ),
               ),
