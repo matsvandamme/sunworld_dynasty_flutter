@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/widgets.dart';
@@ -65,74 +66,150 @@ class _TestState extends State<Test> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: LayoutBuilder(
-          builder: (context, constraints) => CustomPaint(
-            painter: MyPainter(),
-            child: Stack(children: [
-              LayoutBuilder(
-                builder: (context, constraints) => Container(
-                  width: constraints.maxWidth * overlayWidthFraction,
-                  height: constraints.maxHeight * overlayHeightFraction,
-                  child: Container(
-                    color: Colors.transparent,
-                    padding: EdgeInsets.all(5),
-                    margin: EdgeInsets.fromLTRB(
-                        constraints.maxWidth * overlayWidthFraction * 0,
-                        constraints.maxHeight * overlayHeightFraction * 0.1,
-                        constraints.maxWidth * overlayWidthFraction * 0.7,
-                        constraints.maxHeight * overlayHeightFraction * (1-0.23)),
-                    child: Image(image: AssetImage('assets/images/VectorPetal.png')),
-                  ),
-                ),
-              ),
-              LayoutBuilder(
-                builder: (context, constraints) => Container(
-                  width: constraints.maxWidth * overlayWidthFraction,
-                  height: constraints.maxHeight * overlayHeightFraction,
-                  child: Container(
-                    padding: EdgeInsets.all(5),
-                    margin: EdgeInsets.fromLTRB(
-                        constraints.maxWidth * overlayWidthFraction * 0.148,
-                        constraints.maxHeight * overlayHeightFraction * 0.246,
-                        constraints.maxWidth * overlayWidthFraction * 0.4,
-                        constraints.maxHeight * overlayHeightFraction * 0.41),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('''Sunworld
-                                  Dynasty
-                                  Hotel
-                                  Taipei''',
-                            maxLines: 20,
-                            style: GoogleFonts.workSans(
-                              height: 0.50,
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w400,
-                            )),
-                        Divider(
-                          color: Colors.white,
-                          thickness: 1,
-                          endIndent: 45,
-                        ),
-                        Text(
-                          'Quarantine App',
-                          style: GoogleFonts.workSans(
-                            height: 0.50,
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                      ],
+        body: Stack(children: [
+          LayoutBuilder(
+            builder: (context, constraints) => CustomPaint(
+              painter: MyPainter(),
+              child: Stack(children: [
+                LayoutBuilder(
+                  builder: (context, constraints) => Container(
+                    width: constraints.maxWidth * overlayWidthFraction,
+                    height: constraints.maxHeight * overlayHeightFraction,
+                    child: Container(
+                      color: Colors.transparent,
+                      padding: EdgeInsets.all(5),
+                      margin: EdgeInsets.fromLTRB(
+                          constraints.maxWidth * overlayWidthFraction * 0,
+                          constraints.maxHeight * overlayHeightFraction * 0.1,
+                          constraints.maxWidth * overlayWidthFraction * 0.7,
+                          constraints.maxHeight *
+                              overlayHeightFraction *
+                              (1 - 0.23)),
+                      child: Image(
+                          image: AssetImage('assets/images/VectorPetal.png')),
                     ),
                   ),
                 ),
-              ),
-            ]),
+                LayoutBuilder(
+                  builder: (context, constraints) => Container(
+                    width: constraints.maxWidth * overlayWidthFraction,
+                    height: constraints.maxHeight * overlayHeightFraction,
+                    child: Container(
+                      padding: EdgeInsets.all(5),
+                      margin: EdgeInsets.fromLTRB(
+                          constraints.maxWidth * overlayWidthFraction * 0.148,
+                          constraints.maxHeight * overlayHeightFraction * 0.246,
+                          constraints.maxWidth * overlayWidthFraction * 0.4,
+                          constraints.maxHeight * overlayHeightFraction * 0.41),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('''Sunworld
+                                    Dynasty
+                                    Hotel
+                                    Taipei''',
+                              maxLines: 20,
+                              style: GoogleFonts.workSans(
+                                height: 0.50,
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w400,
+                              )),
+                          Divider(
+                            color: Colors.white,
+                            thickness: 1,
+                            endIndent: 45,
+                          ),
+                          Text(
+                            'Quarantine App',
+                            style: GoogleFonts.workSans(
+                              height: 0.50,
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
+            ),
           ),
-        ),
+          LayoutBuilder(
+            builder: (context, constraints) => Center(
+              child: Container(
+                padding: EdgeInsets.all(15),
+                alignment: Alignment.center,
+                width: constraints.maxWidth,
+                height: constraints.maxHeight,
+                color: Colors.transparent,
+                margin:
+                    EdgeInsets.fromLTRB(0, constraints.maxHeight * 0.90, 0, 0),
+                child: Image.asset(
+                  'assets/images/SWDlogo.png',
+                  fit: BoxFit.scaleDown,
+                ),
+              ),
+            ),
+          ),
+          LayoutBuilder(
+            builder: (context, constraints) => Container(
+              margin:
+              EdgeInsets.fromLTRB(constraints.maxWidth*0.06, constraints.maxHeight * 0.77, constraints.maxWidth*0.06, 0),
+              color: Colors.transparent,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ButtonTheme(
+                    minWidth: 129,
+                    height: 53,
+                    child: RaisedButton(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(3)),
+                        side: BorderSide(
+                          color: Color(0xffb00020),
+                        ),
+                      ),
+                      child: Text(
+                        'Register',
+                        style: TextStyle(
+                          color: Color(0xffb00020),
+                        ),
+                      ),
+                      //color: Color(0xffb00020),
+                      onPressed: () {},
+                    ),
+                  ),
+                  ButtonTheme(
+                    minWidth: 129,
+                    height: 53,
+                    child: RaisedButton(
+                      color: Color(0xffb00020),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(3)),
+                        side: BorderSide(
+                          color: Color(0xffb00020),
+                        ),
+                      ),
+                      child: Text(
+                        'Log-in',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      //color: Color(0xffb00020),
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ]),
       ),
     );
   }
