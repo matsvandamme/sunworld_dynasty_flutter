@@ -80,13 +80,13 @@ class _TestState extends State<Test> {
                       padding: EdgeInsets.all(5),
                       margin: EdgeInsets.fromLTRB(
                           constraints.maxWidth * overlayWidthFraction * 0,
-                          constraints.maxHeight * overlayHeightFraction * 0.1,
-                          constraints.maxWidth * overlayWidthFraction * 0.7,
+                          constraints.maxHeight * overlayHeightFraction * 0.09,
+                          constraints.maxWidth * overlayWidthFraction * 0.70,
                           constraints.maxHeight *
                               overlayHeightFraction *
                               (1 - 0.23)),
                       child: Image(
-                          image: AssetImage('assets/images/VectorPetal.png')),
+                          image: AssetImage('assets/images/SWDPetal.png')),
                     ),
                   ),
                 ),
@@ -158,7 +158,7 @@ class _TestState extends State<Test> {
           LayoutBuilder(
             builder: (context, constraints) => Container(
               margin:
-              EdgeInsets.fromLTRB(constraints.maxWidth*0.06, constraints.maxHeight * 0.77, constraints.maxWidth*0.06, 0),
+              EdgeInsets.fromLTRB(constraints.maxWidth*0.06, constraints.maxHeight * 0.75, constraints.maxWidth*0.06, 0),
               color: Colors.transparent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
