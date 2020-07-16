@@ -172,13 +172,13 @@ class _TestState extends State<Test> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(3)),
                         side: BorderSide(
-                          color: Color(0xffb00020),
+                          color: Color(0xffCB1C3F),
                         ),
                       ),
                       child: Text(
                         'Register',
                         style: TextStyle(
-                          color: Color(0xffb00020),
+                          color: Color(0xffCB1C3F),
                         ),
                       ),
                       //color: Color(0xffb00020),
