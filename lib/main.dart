@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'pages/test.dart';
+import 'pages/welcome_screen.dart';
 
 import 'page_modules/backdrop.dart';
 

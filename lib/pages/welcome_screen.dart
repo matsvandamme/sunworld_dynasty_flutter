@@ -167,6 +167,7 @@ class _TestState extends State<Test> {
                     minWidth: 129,
                     height: 53,
                     child: RaisedButton(
+                      elevation: 7,
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(3)),
@@ -188,6 +189,7 @@ class _TestState extends State<Test> {
                     minWidth: 129,
                     height: 53,
                     child: RaisedButton(
+                      elevation: 7,
                       color: Color(0xffb00020),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(3)),
