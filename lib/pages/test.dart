@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:align_positioned/align_positioned.dart';
-import 'package:roomserviceapp/external_packages/utils.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/widgets.dart';
 
 class Test extends StatefulWidget {
   @override
@@ -37,6 +37,7 @@ class MyPainter extends CustomPainter {
     path.lineTo(0, size.height);
     path.close();
 
+    canvas.drawShadow(path.shift(Offset(0, -5)), Colors.black, 8.0, true);
     canvas.drawPath(path, paint);
   }
 
@@ -52,27 +53,65 @@ class _TestState extends State<Test> {
   }
 
   double overlayWidthFraction = 0.85;
-  double overlayHeightFraction = 0.65;
-
+  double overlayHeightFraction = 0.66;
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: SafeArea(
-          child: LayoutBuilder(
-            builder: (context, constraints) => CustomPaint(
-              painter: MyPainter(),
-              child: LayoutBuilder(
-                builder: (context, constraints) => Container(
-                  width: constraints.maxWidth * overlayWidthFraction,
-                  height: constraints.maxHeight * overlayHeightFraction,
-                  child: Container(
-                    color: Colors.blueGrey,
-                    margin: EdgeInsets.fromLTRB(constraints.maxWidth*overlayWidthFraction*0.148, constraints.maxHeight*overlayHeightFraction*0.246, constraints.maxWidth*overlayWidthFraction*0.4, constraints.maxHeight*overlayHeightFraction*0.41),
+        body: LayoutBuilder(
+          builder: (context, constraints) => CustomPaint(
+            painter: MyPainter(),
+            child: LayoutBuilder(
+              builder: (context, constraints) => Container(
+                width: constraints.maxWidth * overlayWidthFraction,
+                height: constraints.maxHeight * overlayHeightFraction,
+                child: Container(
+                    padding: EdgeInsets.all(5),
+                    margin: EdgeInsets.fromLTRB(
+                        constraints.maxWidth * overlayWidthFraction * 0.148,
+                        constraints.maxHeight * overlayHeightFraction * 0.246,
+                        constraints.maxWidth * overlayWidthFraction * 0.4,
+                        constraints.maxHeight * overlayHeightFraction * 0.41),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('''Sunworld
+                                Dynasty
+                                Hotel
+                                Taipei''',
+                            maxLines: 20,
+                            style: GoogleFonts.workSans(
+                              height: 0.50,
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400,
+                            )),
+                        Divider(
+                          color: Colors.white,
+                          thickness: 1,
+                          endIndent: 45,
+                        ),
+                        Text(
+                          'Quarantine App',
+                          style: GoogleFonts.workSans(
+                            height: 0.50,
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+
               ),
             ),
           ),
