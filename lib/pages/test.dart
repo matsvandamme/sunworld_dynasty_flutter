@@ -68,11 +68,28 @@ class _TestState extends State<Test> {
         body: LayoutBuilder(
           builder: (context, constraints) => CustomPaint(
             painter: MyPainter(),
-            child: LayoutBuilder(
-              builder: (context, constraints) => Container(
-                width: constraints.maxWidth * overlayWidthFraction,
-                height: constraints.maxHeight * overlayHeightFraction,
-                child: Container(
+            child: Stack(children: [
+              LayoutBuilder(
+                builder: (context, constraints) => Container(
+                  width: constraints.maxWidth * overlayWidthFraction,
+                  height: constraints.maxHeight * overlayHeightFraction,
+                  child: Container(
+                    color: Colors.transparent,
+                    padding: EdgeInsets.all(5),
+                    margin: EdgeInsets.fromLTRB(
+                        constraints.maxWidth * overlayWidthFraction * 0,
+                        constraints.maxHeight * overlayHeightFraction * 0.1,
+                        constraints.maxWidth * overlayWidthFraction * 0.7,
+                        constraints.maxHeight * overlayHeightFraction * (1-0.23)),
+                    child: Image(image: AssetImage('assets/images/VectorPetal.png')),
+                  ),
+                ),
+              ),
+              LayoutBuilder(
+                builder: (context, constraints) => Container(
+                  width: constraints.maxWidth * overlayWidthFraction,
+                  height: constraints.maxHeight * overlayHeightFraction,
+                  child: Container(
                     padding: EdgeInsets.all(5),
                     margin: EdgeInsets.fromLTRB(
                         constraints.maxWidth * overlayWidthFraction * 0.148,
@@ -84,9 +101,9 @@ class _TestState extends State<Test> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('''Sunworld
-                                Dynasty
-                                Hotel
-                                Taipei''',
+                                  Dynasty
+                                  Hotel
+                                  Taipei''',
                             maxLines: 20,
                             style: GoogleFonts.workSans(
                               height: 0.50,
@@ -111,9 +128,9 @@ class _TestState extends State<Test> {
                       ],
                     ),
                   ),
-
+                ),
               ),
-            ),
+            ]),
           ),
         ),
       ),
