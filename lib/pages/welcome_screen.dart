@@ -12,7 +12,7 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class MyPainter extends CustomPainter {
+class _WelcomeOverlayPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // Define a paint object
@@ -43,7 +43,7 @@ class MyPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(MyPainter oldDelegate) => false;
+  bool shouldRepaint(_WelcomeOverlayPainter oldDelegate) => false;
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
@@ -53,8 +53,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     super.initState();
   }
 
-  double overlayWidthFraction = 0.85;
-  double overlayHeightFraction = 0.66;
+  double _overlayWidthFraction = 0.85;
+  double _overlayHeightFraction = 0.66;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   LayoutBuilder buildOverlay() {
     return LayoutBuilder(
       builder: (context, constraints) => CustomPaint(
-        painter: MyPainter(),
+        painter: _WelcomeOverlayPainter(),
         child: Stack(children: [
           buildFlower(),
           buildTextOnOverlay(),
@@ -168,16 +168,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   LayoutBuilder buildTextOnOverlay() {
     return LayoutBuilder(
       builder: (context, constraints) => Container(
-        width: constraints.maxWidth * overlayWidthFraction,
-        height: constraints.maxHeight * overlayHeightFraction,
+        width: constraints.maxWidth * _overlayWidthFraction,
+        height: constraints.maxHeight * _overlayHeightFraction,
         child: Container(
           color: Colors.transparent,
           padding: EdgeInsets.all(5),
           margin: EdgeInsets.fromLTRB(
-              constraints.maxWidth * overlayWidthFraction * 0.148,
-              constraints.maxHeight * overlayHeightFraction * 0.246,
-              constraints.maxWidth * overlayWidthFraction * 0.4,
-              constraints.maxHeight * overlayHeightFraction * 0.41),
+              constraints.maxWidth * _overlayWidthFraction * 0.148,
+              constraints.maxHeight * _overlayHeightFraction * 0.246,
+              constraints.maxWidth * _overlayWidthFraction * 0.4,
+              constraints.maxHeight * _overlayHeightFraction * 0.41),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,16 +217,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   LayoutBuilder buildFlower() {
     return LayoutBuilder(
       builder: (context, constraints) => Container(
-        width: constraints.maxWidth * overlayWidthFraction,
-        height: constraints.maxHeight * overlayHeightFraction,
+        width: constraints.maxWidth * _overlayWidthFraction,
+        height: constraints.maxHeight * _overlayHeightFraction,
         child: Container(
           color: Colors.transparent,
           padding: EdgeInsets.all(5),
           margin: EdgeInsets.fromLTRB(
-              constraints.maxWidth * overlayWidthFraction * 0,
-              constraints.maxHeight * overlayHeightFraction * 0.09,
-              constraints.maxWidth * overlayWidthFraction * 0.70,
-              constraints.maxHeight * overlayHeightFraction * (1 - 0.23)),
+              constraints.maxWidth * _overlayWidthFraction * 0,
+              constraints.maxHeight * _overlayHeightFraction * 0.09,
+              constraints.maxWidth * _overlayWidthFraction * 0.70,
+              constraints.maxHeight * _overlayHeightFraction * (1 - 0.23)),
           child: Image(image: AssetImage('assets/images/SWDPetal2.png')),
         ),
       ),
