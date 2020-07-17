@@ -149,9 +149,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('''Sunworld
-                                  Dynasty
-                                  Hotel
-                                  Taipei''',
+                      Dynasty
+                      Hotel
+                      Taipei''',
                   maxLines: 20,
                   style: GoogleFonts.workSans(
                     height: 0.50,
@@ -209,22 +209,21 @@ class _WelcomeOverlayPainter extends CustomPainter {
       ..strokeWidth = 4.0
       ..color = Color(0xffCB1C3F);
 
-    Path path = Path();
-
     double radius = 124.0;
 
-    path.moveTo(0, 0);
-    path.lineTo(size.width, 0);
-    path.lineTo(size.width, size.height - radius);
-    path.arcTo(
+    Path path = Path()
+    ..moveTo(0, 0)
+    ..lineTo(size.width, 0)
+    ..lineTo(size.width, size.height - radius)
+    ..arcTo(
         Rect.fromCircle(
             center: Offset(size.width - radius, size.height - radius),
             radius: radius),
         0,
         pi / 2,
-        false);
-    path.lineTo(0, size.height);
-    path.close();
+        false)
+    ..lineTo(0, size.height)
+    ..close();
 
     canvas.drawShadow(path.shift(Offset(0, -5)), Colors.black, 8.0, true);
     canvas.drawPath(path, paint);

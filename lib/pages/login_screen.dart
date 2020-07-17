@@ -1,9 +1,84 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class EmailFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Email can\'t be empty' : null;
+  }
+}
+
+class PasswordFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Password can\'t be empty' : null;
+  }
+}
 
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  String _email;
+  String _password;
+
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+
+    double _screenHeight = MediaQuery.of(context).size.height;
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Container(
+          color: Colors.transparent,
+          margin: EdgeInsets.fromLTRB(
+              0, 0.5 * _screenHeight, 0, 0),
+          child: Stack(
+            children: [
+              _LoginOverlay(),
+              Column(
+                children: [
+                  TextFormField(
+                    key: Key('email'),
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                    ),
+                    validator: EmailFieldValidator.validate,
+                    onSaved: (String value) => _email = value,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _LoginOverlay extends StatelessWidget {
+  const _LoginOverlay({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) => Container(
+        width: constraints.widthConstraints().maxWidth,
+        height: constraints.heightConstraints().maxHeight,
+        color: Colors.transparent,
+        child: CustomPaint(
+          painter: _LoginOverlayPainter(),
+        ),
+      ),
+    );
+  }
 }
 
 class _LoginOverlayPainter extends CustomPainter {
@@ -14,48 +89,18 @@ class _LoginOverlayPainter extends CustomPainter {
       ..strokeWidth = 4.0
       ..color = Color(0xffCB1C3F);
 
-    Path path = Path();
+    Path path = Path()
+      ..moveTo(0, 0)
+      ..lineTo(0, size.height)
+      ..lineTo(size.width, size.height)
+      ..lineTo(size.width, size.height * 0.5)
+      ..lineTo(size.width * 0.5, size.height * 0.75)
+      ..close();
 
-    double radius = 124.0;
-
-    path.moveTo(0, 0);
-    path.lineTo(size.width, 0);
-    path.lineTo(size.width, size.height - radius);
-    path.arcTo(
-        Rect.fromCircle(
-            center: Offset(size.width - radius, size.height - radius),
-            radius: radius),
-        0,
-        pi / 2,
-        false);
-    path.lineTo(0, size.height);
-    path.close();
-
-    canvas.drawShadow(path.shift(Offset(0, -5)), Colors.black, 8.0, true);
+    //canvas.drawShadow(path.shift(Offset(0, -15)), Colors.black, 3, true);
     canvas.drawPath(path, paint);
   }
 
   @override
   bool shouldRepaint(_LoginOverlayPainter oldDelegate) => false;
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return _buildOverlay();
-  }
-}
-
-LayoutBuilder _buildOverlay() {
-  return LayoutBuilder(
-    builder: (context, constraints) => CustomPaint(
-      painter: _LoginOverlayPainter(),
-      child: Container(
-        width: constraints.maxWidth,
-        height: constraints.maxHeight,
-        color: Colors.amber,
-        margin: EdgeInsets.fromLTRB(0, 0, 0, constraints.maxHeight*0.85),
-      ),
-    ),
-  );
 }
