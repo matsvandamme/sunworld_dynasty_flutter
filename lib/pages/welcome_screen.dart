@@ -77,14 +77,14 @@ class _TestState extends State<Test> {
 
   LayoutBuilder buildOverlay() {
     return LayoutBuilder(
-          builder: (context, constraints) => CustomPaint(
-            painter: MyPainter(),
-            child: Stack(children: [
-              buildFlower(),
-              buildTextOnOverlay(),
-            ]),
-          ),
-        );
+      builder: (context, constraints) => CustomPaint(
+        painter: MyPainter(),
+        child: Stack(children: [
+          buildFlower(),
+          buildTextOnOverlay(),
+        ]),
+      ),
+    );
   }
 
   LayoutBuilder buildButtons() {
