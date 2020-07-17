@@ -27,7 +27,7 @@ class App extends StatelessWidget {
       home: SafeArea(
         child: Scaffold(
           body: Center(
-            child: Test(),
+            child: WelcomeScreen(),
           ),
         ),
       ),

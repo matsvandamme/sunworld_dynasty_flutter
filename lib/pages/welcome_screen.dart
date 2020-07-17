@@ -7,9 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/widgets.dart';
 
-class Test extends StatefulWidget {
+class WelcomeScreen extends StatefulWidget {
   @override
-  _TestState createState() => _TestState();
+  _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
 class MyPainter extends CustomPainter {
@@ -46,7 +46,7 @@ class MyPainter extends CustomPainter {
   bool shouldRepaint(MyPainter oldDelegate) => false;
 }
 
-class _TestState extends State<Test> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIOverlays([]);
@@ -92,7 +92,7 @@ class _TestState extends State<Test> {
       builder: (context, constraints) => Container(
         margin: EdgeInsets.fromLTRB(constraints.maxWidth * 0.06,
             constraints.maxHeight * 0.75, constraints.maxWidth * 0.06, 0),
-        color: Colors.amber,
+        color: Colors.transparent,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -171,7 +171,7 @@ class _TestState extends State<Test> {
         width: constraints.maxWidth * overlayWidthFraction,
         height: constraints.maxHeight * overlayHeightFraction,
         child: Container(
-          color: Colors.amber,
+          color: Colors.transparent,
           padding: EdgeInsets.all(5),
           margin: EdgeInsets.fromLTRB(
               constraints.maxWidth * overlayWidthFraction * 0.148,
@@ -220,7 +220,7 @@ class _TestState extends State<Test> {
         width: constraints.maxWidth * overlayWidthFraction,
         height: constraints.maxHeight * overlayHeightFraction,
         child: Container(
-          color: Colors.amber,
+          color: Colors.transparent,
           padding: EdgeInsets.all(5),
           margin: EdgeInsets.fromLTRB(
               constraints.maxWidth * overlayWidthFraction * 0,
