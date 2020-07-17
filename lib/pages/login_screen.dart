@@ -19,6 +19,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  static GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   String _email;
   String _password;
 
@@ -29,50 +31,39 @@ class _LoginScreenState extends State<LoginScreen> {
     ]);
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 
-    double _screenHeight = MediaQuery.of(context).size.height;
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Container(
-          color: Colors.transparent,
-          margin: EdgeInsets.fromLTRB(
-              0, 0.5 * _screenHeight, 0, 0),
-          child: Stack(
-            children: [
-              _LoginOverlay(),
-              Column(
-                children: [
-                  TextFormField(
-                    key: Key('email'),
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                    ),
-                    validator: EmailFieldValidator.validate,
-                    onSaved: (String value) => _email = value,
-                  ),
-                ],
-              ),
-            ],
+      home: SafeArea(
+        child: Scaffold(
+
+          resizeToAvoidBottomInset: false,
+          body: Form(
+            key: formKey,
+            child: ListView(
+              children: [
+                TextFormField(
+                  key: Key('email'),
+                  decoration: InputDecoration(labelText: 'Email'),
+                ),
+                TextFormField(
+                  key: Key('password'),
+                  decoration: InputDecoration(labelText: 'Password'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-}
 
-class _LoginOverlay extends StatelessWidget {
-  const _LoginOverlay({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  LayoutBuilder buildLoginOverlay() {
     return LayoutBuilder(
       builder: (context, constraints) => Container(
-        width: constraints.widthConstraints().maxWidth,
-        height: constraints.heightConstraints().maxHeight,
-        color: Colors.transparent,
+        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+        width: constraints.maxWidth,
+        height: constraints.maxHeight,
+        color: Colors.amberAccent,
         child: CustomPaint(
           painter: _LoginOverlayPainter(),
         ),

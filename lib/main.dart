@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'pages/welcome_screen.dart';
 import 'pages/login_screen.dart';
+import 'authentication/login_page.dart';
 
 import 'page_modules/backdrop.dart';
 
@@ -28,7 +29,7 @@ class App extends StatelessWidget {
       home: SafeArea(
         child: Scaffold(
           body: Center(
-            child: LoginScreen(),
+            child: LoginPage(),
           ),
         ),
       ),
