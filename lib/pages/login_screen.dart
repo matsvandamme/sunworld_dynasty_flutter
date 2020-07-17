@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -5,10 +6,9 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class MyPainter extends CustomPainter {
+class _LoginOverlayPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    // Define a paint object
     final paint = Paint()
       ..style = PaintingStyle.fill
       ..strokeWidth = 4.0
@@ -36,14 +36,26 @@ class MyPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(MyPainter oldDelegate) => false;
+  bool shouldRepaint(_LoginOverlayPainter oldDelegate) => false;
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellowAccent,
-    );
+    return _buildOverlay();
   }
+}
+
+LayoutBuilder _buildOverlay() {
+  return LayoutBuilder(
+    builder: (context, constraints) => CustomPaint(
+      painter: _LoginOverlayPainter(),
+      child: Container(
+        width: constraints.maxWidth,
+        height: constraints.maxHeight,
+        color: Colors.amber,
+        margin: EdgeInsets.fromLTRB(0, 0, 0, constraints.maxHeight*0.85),
+      ),
+    ),
+  );
 }

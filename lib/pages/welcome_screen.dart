@@ -12,50 +12,7 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeOverlayPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    // Define a paint object
-    final paint = Paint()
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 4.0
-      ..color = Color(0xffCB1C3F);
-
-    Path path = Path();
-
-    double radius = 124.0;
-
-    path.moveTo(0, 0);
-    path.lineTo(size.width, 0);
-    path.lineTo(size.width, size.height - radius);
-    path.arcTo(
-        Rect.fromCircle(
-            center: Offset(size.width - radius, size.height - radius),
-            radius: radius),
-        0,
-        pi / 2,
-        false);
-    path.lineTo(0, size.height);
-    path.close();
-
-    canvas.drawShadow(path.shift(Offset(0, -5)), Colors.black, 8.0, true);
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(_WelcomeOverlayPainter oldDelegate) => false;
-}
-
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  @override
-  void initState() {
-    SystemChrome.setEnabledSystemUIOverlays([]);
-    super.initState();
-  }
-
-  double _overlayWidthFraction = 0.85;
-  double _overlayHeightFraction = 0.66;
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -67,27 +24,36 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(children: [
-          buildOverlay(),
-          buildSWDLogoBottom(),
-          buildButtons(),
+          _buildOverlay(),
+          _buildSWDLogoBottom(),
+          _buildButtons(),
         ]),
       ),
     );
   }
 
-  LayoutBuilder buildOverlay() {
+  @override
+  void initState() {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    super.initState();
+  }
+
+  double _overlayWidthFraction = 0.85;
+  double _overlayHeightFraction = 0.66;
+
+  LayoutBuilder _buildOverlay() {
     return LayoutBuilder(
       builder: (context, constraints) => CustomPaint(
         painter: _WelcomeOverlayPainter(),
         child: Stack(children: [
-          buildFlower(),
+          _buildFlower(),
           buildTextOnOverlay(),
         ]),
       ),
     );
   }
 
-  LayoutBuilder buildButtons() {
+  LayoutBuilder _buildButtons() {
     return LayoutBuilder(
       builder: (context, constraints) => Container(
         margin: EdgeInsets.fromLTRB(constraints.maxWidth * 0.06,
@@ -146,7 +112,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  LayoutBuilder buildSWDLogoBottom() {
+  LayoutBuilder _buildSWDLogoBottom() {
     return LayoutBuilder(
       builder: (context, constraints) => Center(
         child: Container(
@@ -214,7 +180,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  LayoutBuilder buildFlower() {
+  LayoutBuilder _buildFlower() {
     return LayoutBuilder(
       builder: (context, constraints) => Container(
         width: constraints.maxWidth * _overlayWidthFraction,
@@ -232,4 +198,38 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
     );
   }
+}
+
+class _WelcomeOverlayPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Define a paint object
+    final paint = Paint()
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 4.0
+      ..color = Color(0xffCB1C3F);
+
+    Path path = Path();
+
+    double radius = 124.0;
+
+    path.moveTo(0, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height - radius);
+    path.arcTo(
+        Rect.fromCircle(
+            center: Offset(size.width - radius, size.height - radius),
+            radius: radius),
+        0,
+        pi / 2,
+        false);
+    path.lineTo(0, size.height);
+    path.close();
+
+    canvas.drawShadow(path.shift(Offset(0, -5)), Colors.black, 8.0, true);
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(_WelcomeOverlayPainter oldDelegate) => false;
 }
