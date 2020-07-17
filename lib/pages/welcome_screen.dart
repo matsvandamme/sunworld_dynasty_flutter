@@ -154,7 +154,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           alignment: Alignment.center,
           width: constraints.maxWidth,
           height: constraints.maxHeight,
-          color: Colors.amber,
+          color: Colors.transparent,
           margin: EdgeInsets.fromLTRB(0, constraints.maxHeight * 0.90, 0, 0),
           child: Image.asset(
             'assets/images/SWDlogo.png',
