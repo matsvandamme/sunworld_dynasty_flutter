@@ -86,7 +86,7 @@ class _TestState extends State<Test> {
                               overlayHeightFraction *
                               (1 - 0.23)),
                       child: Image(
-                          image: AssetImage('assets/images/SWDPetal.png')),
+                          image: AssetImage('assets/images/SWDPetal2.png')),
                     ),
                   ),
                 ),
