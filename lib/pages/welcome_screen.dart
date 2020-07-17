@@ -67,151 +67,168 @@ class _TestState extends State<Test> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(children: [
-          LayoutBuilder(
-            builder: (context, constraints) => CustomPaint(
-              painter: MyPainter(),
-              child: Stack(children: [
-                LayoutBuilder(
-                  builder: (context, constraints) => Container(
-                    width: constraints.maxWidth * overlayWidthFraction,
-                    height: constraints.maxHeight * overlayHeightFraction,
-                    child: Container(
-                      color: Colors.transparent,
-                      padding: EdgeInsets.all(5),
-                      margin: EdgeInsets.fromLTRB(
-                          constraints.maxWidth * overlayWidthFraction * 0,
-                          constraints.maxHeight * overlayHeightFraction * 0.09,
-                          constraints.maxWidth * overlayWidthFraction * 0.70,
-                          constraints.maxHeight *
-                              overlayHeightFraction *
-                              (1 - 0.23)),
-                      child: Image(
-                          image: AssetImage('assets/images/SWDPetal2.png')),
-                    ),
-                  ),
-                ),
-                LayoutBuilder(
-                  builder: (context, constraints) => Container(
-                    width: constraints.maxWidth * overlayWidthFraction,
-                    height: constraints.maxHeight * overlayHeightFraction,
-                    child: Container(
-                      padding: EdgeInsets.all(5),
-                      margin: EdgeInsets.fromLTRB(
-                          constraints.maxWidth * overlayWidthFraction * 0.148,
-                          constraints.maxHeight * overlayHeightFraction * 0.246,
-                          constraints.maxWidth * overlayWidthFraction * 0.4,
-                          constraints.maxHeight * overlayHeightFraction * 0.41),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('''Sunworld
-                                    Dynasty
-                                    Hotel
-                                    Taipei''',
-                              maxLines: 20,
-                              style: GoogleFonts.workSans(
-                                height: 0.50,
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w400,
-                              )),
-                          Divider(
-                            color: Colors.white,
-                            thickness: 1,
-                            endIndent: 45,
-                          ),
-                          Text(
-                            'Quarantine App',
-                            style: GoogleFonts.workSans(
-                              height: 0.50,
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ]),
-            ),
-          ),
-          LayoutBuilder(
-            builder: (context, constraints) => Center(
-              child: Container(
-                padding: EdgeInsets.all(15),
-                alignment: Alignment.center,
-                width: constraints.maxWidth,
-                height: constraints.maxHeight,
-                color: Colors.transparent,
-                margin:
-                    EdgeInsets.fromLTRB(0, constraints.maxHeight * 0.90, 0, 0),
-                child: Image.asset(
-                  'assets/images/SWDlogo.png',
-                  fit: BoxFit.scaleDown,
-                ),
-              ),
-            ),
-          ),
-          LayoutBuilder(
-            builder: (context, constraints) => Container(
-              margin:
-              EdgeInsets.fromLTRB(constraints.maxWidth*0.06, constraints.maxHeight * 0.75, constraints.maxWidth*0.06, 0),
-              color: Colors.transparent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ButtonTheme(
-                    minWidth: 129,
-                    height: 53,
-                    child: RaisedButton(
-                      elevation: 7,
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(3)),
-                        side: BorderSide(
-                          color: Color(0xffCB1C3F),
-                        ),
-                      ),
-                      child: Text(
-                        'Register',
-                        style: TextStyle(
-                          color: Color(0xffCB1C3F),
-                        ),
-                      ),
-                      //color: Color(0xffb00020),
-                      onPressed: () {},
-                    ),
-                  ),
-                  ButtonTheme(
-                    minWidth: 129,
-                    height: 53,
-                    child: RaisedButton(
-                      elevation: 7,
-                      color: Color(0xffb00020),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(3)),
-                        side: BorderSide(
-                          color: Color(0xffb00020),
-                        ),
-                      ),
-                      child: Text(
-                        'Log-in',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      //color: Color(0xffb00020),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          )
+          buildOverlay(),
+          buildSWDLogoBottom(),
+          buildButtons(),
         ]),
+      ),
+    );
+  }
+
+  LayoutBuilder buildOverlay() {
+    return LayoutBuilder(
+          builder: (context, constraints) => CustomPaint(
+            painter: MyPainter(),
+            child: Stack(children: [
+              buildFlower(),
+              buildTextOnOverlay(),
+            ]),
+          ),
+        );
+  }
+
+  LayoutBuilder buildButtons() {
+    return LayoutBuilder(
+      builder: (context, constraints) => Container(
+        margin: EdgeInsets.fromLTRB(constraints.maxWidth * 0.06,
+            constraints.maxHeight * 0.75, constraints.maxWidth * 0.06, 0),
+        color: Colors.amber,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ButtonTheme(
+              minWidth: 129,
+              height: 53,
+              child: RaisedButton(
+                elevation: 7,
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(3)),
+                  side: BorderSide(
+                    color: Color(0xffCB1C3F),
+                  ),
+                ),
+                child: Text(
+                  'Register',
+                  style: TextStyle(
+                    color: Color(0xffCB1C3F),
+                  ),
+                ),
+                //color: Color(0xffb00020),
+                onPressed: () {},
+              ),
+            ),
+            ButtonTheme(
+              minWidth: 129,
+              height: 53,
+              child: RaisedButton(
+                elevation: 7,
+                color: Color(0xffb00020),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(3)),
+                  side: BorderSide(
+                    color: Color(0xffb00020),
+                  ),
+                ),
+                child: Text(
+                  'Log-in',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                //color: Color(0xffb00020),
+                onPressed: () {},
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  LayoutBuilder buildSWDLogoBottom() {
+    return LayoutBuilder(
+      builder: (context, constraints) => Center(
+        child: Container(
+          padding: EdgeInsets.all(15),
+          alignment: Alignment.center,
+          width: constraints.maxWidth,
+          height: constraints.maxHeight,
+          color: Colors.amber,
+          margin: EdgeInsets.fromLTRB(0, constraints.maxHeight * 0.90, 0, 0),
+          child: Image.asset(
+            'assets/images/SWDlogo.png',
+            fit: BoxFit.scaleDown,
+          ),
+        ),
+      ),
+    );
+  }
+
+  LayoutBuilder buildTextOnOverlay() {
+    return LayoutBuilder(
+      builder: (context, constraints) => Container(
+        width: constraints.maxWidth * overlayWidthFraction,
+        height: constraints.maxHeight * overlayHeightFraction,
+        child: Container(
+          color: Colors.amber,
+          padding: EdgeInsets.all(5),
+          margin: EdgeInsets.fromLTRB(
+              constraints.maxWidth * overlayWidthFraction * 0.148,
+              constraints.maxHeight * overlayHeightFraction * 0.246,
+              constraints.maxWidth * overlayWidthFraction * 0.4,
+              constraints.maxHeight * overlayHeightFraction * 0.41),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('''Sunworld
+                                  Dynasty
+                                  Hotel
+                                  Taipei''',
+                  maxLines: 20,
+                  style: GoogleFonts.workSans(
+                    height: 0.50,
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  )),
+              Divider(
+                color: Colors.white,
+                thickness: 1,
+                endIndent: 45,
+              ),
+              Text(
+                'Quarantine App',
+                style: GoogleFonts.workSans(
+                  height: 0.50,
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  LayoutBuilder buildFlower() {
+    return LayoutBuilder(
+      builder: (context, constraints) => Container(
+        width: constraints.maxWidth * overlayWidthFraction,
+        height: constraints.maxHeight * overlayHeightFraction,
+        child: Container(
+          color: Colors.amber,
+          padding: EdgeInsets.all(5),
+          margin: EdgeInsets.fromLTRB(
+              constraints.maxWidth * overlayWidthFraction * 0,
+              constraints.maxHeight * overlayHeightFraction * 0.09,
+              constraints.maxWidth * overlayWidthFraction * 0.70,
+              constraints.maxHeight * overlayHeightFraction * (1 - 0.23)),
+          child: Image(image: AssetImage('assets/images/SWDPetal2.png')),
+        ),
       ),
     );
   }
