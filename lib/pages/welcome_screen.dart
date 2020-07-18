@@ -7,9 +7,11 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/widgets.dart';
 import 'package:roomserviceapp/page_modules/store.dart';
+import 'package:roomserviceapp/pages/login_page.dart';
 
 class WelcomeScreen extends StatefulWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
@@ -19,12 +21,20 @@ enum AuthStatus {
   signedIn,
 }
 
+enum FormType {
+  login,
+  register,
+  welcome,
+}
+
 class _WelcomeScreenState extends State<WelcomeScreen> {
 
   AuthStatus authStatus = AuthStatus.notSignedIn;
+  FormType formType = FormType.welcome;
 
   initState() {
     super.initState();
+    widget._auth.signOut();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -42,206 +52,179 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       authStatus = status;
     });
   }
-  
 
-    @override
-    // ignore: missing_return
-    Widget build(BuildContext context) {
-      switch (authStatus) {
-        case AuthStatus.notSignedIn:
-          return WelcomePage(
-            //auth: widget.auth,
-            //onSignIn: () => _updateAuthStatus(AuthStatus.signedIn),
-          );
-        case AuthStatus.signedIn:
-          return Store(
-            //auth: widget.auth,
-            //onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn)
-          );
-      }
-    }
+  void _goToLogin() {
+    setState(() {
+      formType = FormType.login;
+    });
+  }
+
+  void _goToRegister() {
+    setState(() {
+      formType = FormType.register;
+    });
   }
 
 
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({
-    Key key,
-  }) : super(key: key);
 
   @override
+  // ignore: missing_return
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(children: [
-        _buildOverlay(),
-        _buildSWDLogoBottom(),
-        _buildButtons(),
-      ]),
-    );
+    double _overlayWidthFraction = 0.85;
+    double _overlayHeightFraction = 0.66;
+
+    switch (authStatus) {
+      case AuthStatus.notSignedIn:
+        if (formType == FormType.login) {
+          return LoginPage();
+        }
+        if (formType == FormType.register) {
+          return LoginPage();
+        }
+        return Scaffold(
+          body: Stack(children: [
+            LayoutBuilder(
+              builder: (context, constraints) =>
+                  CustomPaint(
+                    painter: _WelcomeOverlayPainter(),
+                    child: Stack(children: [
+                      LayoutBuilder(
+                        builder: (context, constraints) =>
+                            Container(
+                              width: constraints.maxWidth * _overlayWidthFraction,
+                              height: constraints.maxHeight * _overlayHeightFraction,
+                              child: Container(
+                                color: Colors.transparent,
+                                padding: EdgeInsets.all(5),
+                                margin: EdgeInsets.fromLTRB(
+                                    constraints.maxWidth * _overlayWidthFraction * 0,
+                                    constraints.maxHeight * _overlayHeightFraction * 0.09,
+                                    constraints.maxWidth * _overlayWidthFraction * 0.70,
+                                    constraints.maxHeight * _overlayHeightFraction * (1 - 0.23)),
+                                child: Image(image: AssetImage('assets/images/SWDPetal2.png')),
+                              ),
+                            ),
+                      ),
+                      LayoutBuilder(
+                        builder: (context, constraints) =>
+                            Container(
+                              width: constraints.maxWidth * _overlayWidthFraction,
+                              height: constraints.maxHeight * _overlayHeightFraction,
+                              child: Container(
+                                color: Colors.transparent,
+                                padding: EdgeInsets.all(5),
+                                margin: EdgeInsets.fromLTRB(
+                                    constraints.maxWidth * _overlayWidthFraction * 0.148,
+                                    constraints.maxHeight * _overlayHeightFraction * 0.246,
+                                    constraints.maxWidth * _overlayWidthFraction * 0.4,
+                                    constraints.maxHeight * _overlayHeightFraction * 0.41),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('''Sunworld
+                      Dynasty
+                      Hotel
+                      Taipei''',
+                                        maxLines: 20,
+                                        style: GoogleFonts.workSans(
+                                          height: 0.50,
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w400,
+                                        )),
+                                    Divider(
+                                      color: Colors.white,
+                                      thickness: 1,
+                                      endIndent: 45,
+                                    ),
+                                    Text(
+                                      'Quarantine App',
+                                      style: GoogleFonts.workSans(
+                                        height: 0.50,
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                      ),
+                    ]),
+                  ),
+            ),
+            LayoutBuilder(
+              builder: (context, constraints) =>
+                  Container(
+                    margin: EdgeInsets.fromLTRB(constraints.maxWidth * 0.06,
+                        constraints.maxHeight * 0.75, constraints.maxWidth * 0.06, 0),
+                    color: Colors.transparent,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ButtonTheme(
+                          minWidth: 129,
+                          height: 53,
+                          child: RaisedButton(
+                            elevation: 7,
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(3)),
+                              side: BorderSide(
+                                color: Color(0xffCB1C3F),
+                              ),
+                            ),
+                            child: Text(
+                              'Register',
+                              style: TextStyle(
+                                color: Color(0xffCB1C3F),
+                              ),
+                            ),
+                            //color: Color(0xffb00020),
+                            onPressed: _goToRegister,
+                          ),
+                        ),
+                        ButtonTheme(
+                          minWidth: 129,
+                          height: 53,
+                          child: RaisedButton(
+                            elevation: 7,
+                            color: Color(0xffb00020),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(3)),
+                              side: BorderSide(
+                                color: Color(0xffb00020),
+                              ),
+                            ),
+                            child: Text(
+                              'Log-in',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            //color: Color(0xffb00020),
+                            onPressed: _goToLogin,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+            ),
+          ]),
+        );
+      case AuthStatus.signedIn:
+        return Store(
+          //auth: widget.auth,
+          //onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn)
+        );
+    }
   }
 }
 
 
 
-  double _overlayWidthFraction = 0.85;
-  double _overlayHeightFraction = 0.66;
-
-  LayoutBuilder _buildOverlay() {
-    return LayoutBuilder(
-      builder: (context, constraints) => CustomPaint(
-        painter: _WelcomeOverlayPainter(),
-        child: Stack(children: [
-          _buildFlower(),
-          buildTextOnOverlay(),
-        ]),
-      ),
-    );
-  }
-
-  LayoutBuilder _buildButtons() {
-    return LayoutBuilder(
-      builder: (context, constraints) => Container(
-        margin: EdgeInsets.fromLTRB(constraints.maxWidth * 0.06,
-            constraints.maxHeight * 0.75, constraints.maxWidth * 0.06, 0),
-        color: Colors.transparent,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ButtonTheme(
-              minWidth: 129,
-              height: 53,
-              child: RaisedButton(
-                elevation: 7,
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(3)),
-                  side: BorderSide(
-                    color: Color(0xffCB1C3F),
-                  ),
-                ),
-                child: Text(
-                  'Register',
-                  style: TextStyle(
-                    color: Color(0xffCB1C3F),
-                  ),
-                ),
-                //color: Color(0xffb00020),
-                onPressed: () {},
-              ),
-            ),
-            ButtonTheme(
-              minWidth: 129,
-              height: 53,
-              child: RaisedButton(
-                elevation: 7,
-                color: Color(0xffb00020),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(3)),
-                  side: BorderSide(
-                    color: Color(0xffb00020),
-                  ),
-                ),
-                child: Text(
-                  'Log-in',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                //color: Color(0xffb00020),
-                onPressed: () {},
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  LayoutBuilder _buildSWDLogoBottom() {
-    return LayoutBuilder(
-      builder: (context, constraints) => Center(
-        child: Container(
-          padding: EdgeInsets.all(15),
-          alignment: Alignment.center,
-          width: constraints.maxWidth,
-          height: constraints.maxHeight,
-          color: Colors.transparent,
-          margin: EdgeInsets.fromLTRB(0, constraints.maxHeight * 0.90, 0, 0),
-          child: Image.asset(
-            'assets/images/SWDlogo.png',
-            fit: BoxFit.scaleDown,
-          ),
-        ),
-      ),
-    );
-  }
-
-  LayoutBuilder buildTextOnOverlay() {
-    return LayoutBuilder(
-      builder: (context, constraints) => Container(
-        width: constraints.maxWidth * _overlayWidthFraction,
-        height: constraints.maxHeight * _overlayHeightFraction,
-        child: Container(
-          color: Colors.transparent,
-          padding: EdgeInsets.all(5),
-          margin: EdgeInsets.fromLTRB(
-              constraints.maxWidth * _overlayWidthFraction * 0.148,
-              constraints.maxHeight * _overlayHeightFraction * 0.246,
-              constraints.maxWidth * _overlayWidthFraction * 0.4,
-              constraints.maxHeight * _overlayHeightFraction * 0.41),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('''Sunworld
-                      Dynasty
-                      Hotel
-                      Taipei''',
-                  maxLines: 20,
-                  style: GoogleFonts.workSans(
-                    height: 0.50,
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                  )),
-              Divider(
-                color: Colors.white,
-                thickness: 1,
-                endIndent: 45,
-              ),
-              Text(
-                'Quarantine App',
-                style: GoogleFonts.workSans(
-                  height: 0.50,
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  LayoutBuilder _buildFlower() {
-    return LayoutBuilder(
-      builder: (context, constraints) => Container(
-        width: constraints.maxWidth * _overlayWidthFraction,
-        height: constraints.maxHeight * _overlayHeightFraction,
-        child: Container(
-          color: Colors.transparent,
-          padding: EdgeInsets.all(5),
-          margin: EdgeInsets.fromLTRB(
-              constraints.maxWidth * _overlayWidthFraction * 0,
-              constraints.maxHeight * _overlayHeightFraction * 0.09,
-              constraints.maxWidth * _overlayWidthFraction * 0.70,
-              constraints.maxHeight * _overlayHeightFraction * (1 - 0.23)),
-          child: Image(image: AssetImage('assets/images/SWDPetal2.png')),
-        ),
-      ),
-    );
-  }
 
 
 class _WelcomeOverlayPainter extends CustomPainter {
@@ -257,8 +240,7 @@ class _WelcomeOverlayPainter extends CustomPainter {
 
     Path path = Path()
       ..moveTo(0, 0)
-      ..lineTo(size.width, 0)
-      ..lineTo(size.width, size.height - radius)
+      ..lineTo(size.width, 0)..lineTo(size.width, size.height - radius)
       ..arcTo(
           Rect.fromCircle(
               center: Offset(size.width - radius, size.height - radius),

@@ -56,7 +56,6 @@ class _BackdropPageState extends State<Store>
             ],
           ),
         ),
-        appBar: new AppBar(),
         body: _children[_currentIndex],
       ),
     );
