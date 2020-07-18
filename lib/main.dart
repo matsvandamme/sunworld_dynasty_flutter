@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'pages/welcome_screen.dart';
-import 'pages/login_screen.dart';
-import 'authentication/login_page.dart';
-
-import 'page_modules/backdrop.dart';
+import 'package:roomserviceapp/pages/welcome_screen.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -17,9 +13,6 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        '/backdrop': (context)=> Backdrop(),
-      },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -29,7 +22,7 @@ class App extends StatelessWidget {
       home: SafeArea(
         child: Scaffold(
           body: Center(
-            child: LoginPage(),
+            child: WelcomeScreen(),
           ),
         ),
       ),

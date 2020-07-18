@@ -1,42 +1,86 @@
 import 'dart:math';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/widgets.dart';
+import 'package:roomserviceapp/page_modules/store.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
+enum AuthStatus {
+  notSignedIn,
+  signedIn,
+}
+
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  @override
-  Widget build(BuildContext context) {
+
+  AuthStatus authStatus = AuthStatus.notSignedIn;
+
+  initState() {
+    super.initState();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Stack(children: [
-          _buildOverlay(),
-          _buildSWDLogoBottom(),
-          _buildButtons(),
-        ]),
-      ),
-    );
+    widget._auth.currentUser().then((userId) {
+      setState(() {
+        authStatus =
+        userId != null ? AuthStatus.signedIn : AuthStatus.notSignedIn;
+      });
+    });
   }
+
+  void _updateAuthStatus(AuthStatus status) {
+    setState(() {
+      authStatus = status;
+    });
+  }
+  
+
+    @override
+    // ignore: missing_return
+    Widget build(BuildContext context) {
+      switch (authStatus) {
+        case AuthStatus.notSignedIn:
+          return WelcomePage(
+            //auth: widget.auth,
+            //onSignIn: () => _updateAuthStatus(AuthStatus.signedIn),
+          );
+        case AuthStatus.signedIn:
+          return Store(
+            //auth: widget.auth,
+            //onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn)
+          );
+      }
+    }
+  }
+
+
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({
+    Key key,
+  }) : super(key: key);
 
   @override
-  void initState() {
-    SystemChrome.setEnabledSystemUIOverlays([]);
-    super.initState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(children: [
+        _buildOverlay(),
+        _buildSWDLogoBottom(),
+        _buildButtons(),
+      ]),
+    );
   }
+}
+
+
 
   double _overlayWidthFraction = 0.85;
   double _overlayHeightFraction = 0.66;
@@ -198,7 +242,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
     );
   }
-}
+
 
 class _WelcomeOverlayPainter extends CustomPainter {
   @override
@@ -212,18 +256,18 @@ class _WelcomeOverlayPainter extends CustomPainter {
     double radius = 124.0;
 
     Path path = Path()
-    ..moveTo(0, 0)
-    ..lineTo(size.width, 0)
-    ..lineTo(size.width, size.height - radius)
-    ..arcTo(
-        Rect.fromCircle(
-            center: Offset(size.width - radius, size.height - radius),
-            radius: radius),
-        0,
-        pi / 2,
-        false)
-    ..lineTo(0, size.height)
-    ..close();
+      ..moveTo(0, 0)
+      ..lineTo(size.width, 0)
+      ..lineTo(size.width, size.height - radius)
+      ..arcTo(
+          Rect.fromCircle(
+              center: Offset(size.width - radius, size.height - radius),
+              radius: radius),
+          0,
+          pi / 2,
+          false)
+      ..lineTo(0, size.height)
+      ..close();
 
     canvas.drawShadow(path.shift(Offset(0, -5)), Colors.black, 8.0, true);
     canvas.drawPath(path, paint);
