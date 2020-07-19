@@ -4,12 +4,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:roomserviceapp/page_modules/store.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
-
 class LoginPage extends StatefulWidget {
   final String title = 'Registration';
+  final FirebaseAuth auth;
+
+  const LoginPage({Key key, this.auth}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => LoginPageState();
@@ -45,7 +48,9 @@ class LoginPageState extends State<LoginPage> {
         ],
       ),
       body: Builder(builder: (BuildContext context) {
-        return _EmailPasswordForm();
+        return _EmailPasswordForm(
+          auth: widget.auth,
+        );
       }),
     );
   }
@@ -57,6 +62,10 @@ class LoginPageState extends State<LoginPage> {
 }
 
 class _EmailPasswordForm extends StatefulWidget {
+  final FirebaseAuth auth;
+
+  const _EmailPasswordForm({Key key, this.auth}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _EmailPasswordFormState();
 }
@@ -76,7 +85,7 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            child: const Text('Test sign in with email and password'),
+            child: const Text('Please enter your credentials'),
             padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
           ),
@@ -148,6 +157,10 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
         _success = true;
         _userEmail = user.email;
       });
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Store()),
+      );
     } else {
       _success = false;
     }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:roomserviceapp/external_packages/utils.dart';
 import 'package:roomserviceapp/pages/dessert_menu.dart';
 import 'package:roomserviceapp/pages/drinks_menu.dart';
 import 'package:roomserviceapp/pages/food_menu.dart';
-import 'package:page_view_indicators/circle_page_indicator.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 var _currentPageNotifier = ValueNotifier<int>(0);
@@ -27,7 +25,6 @@ class _PageViewWidgetState extends State<PageViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Size _screenSize = MediaQuery.of(context).size;
     return Scaffold(
       key: _scaffoldKey,
 
