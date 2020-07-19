@@ -3,16 +3,46 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:roomserviceapp/authentication/auth_service.dart';
 import 'package:roomserviceapp/page_modules/store.dart';
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
+class LoginHandler extends StatefulWidget {
+  @override
+  _LoginHandlerState createState() => _LoginHandlerState();
+}
+
+class _LoginHandlerState extends State<LoginHandler> {
+  @override
+  Widget build(BuildContext context) {
+    final AuthService auth = Provider.of<AuthService>(context);
+
+    return StreamBuilder(
+      stream: auth.onAuthStateChanged,
+      builder: (_, AsyncSnapshot<User> snapshot) {
+        if (snapshot.connectionState == ConnectionState.active) {
+          final User user = snapshot.data;
+          return user == null
+              ? LoginPage()
+              : MaterialPageRoute(
+                  builder: (context) => Store(),
+                );
+        } else {
+          return Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
+    );
+  }
+}
 
 class LoginPage extends StatefulWidget {
-  final String title = 'Registration';
-  final FirebaseAuth auth;
+  final String title = 'Log in';
 
-  const LoginPage({Key key, this.auth}) : super(key: key);
+  const LoginPage({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => LoginPageState();
@@ -21,48 +51,22 @@ class LoginPage extends StatefulWidget {
 class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    final AuthService auth = Provider.of<AuthService>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        actions: <Widget>[
-          Builder(builder: (BuildContext context) {
-            return FlatButton(
-              child: const Text('Sign out'),
-              textColor: Theme.of(context).buttonColor,
-              onPressed: () async {
-                final FirebaseUser user = await _auth.currentUser();
-                if (user == null) {
-                  Scaffold.of(context).showSnackBar(const SnackBar(
-                    content: Text('No one has signed in.'),
-                  ));
-                  return;
-                }
-                _signOut();
-                final String uid = user.email;
-                Scaffold.of(context).showSnackBar(SnackBar(
-                  content: Text(uid + ' has successfully signed out.'),
-                ));
-              },
-            );
-          })
-        ],
       ),
       body: Builder(builder: (BuildContext context) {
         return _EmailPasswordForm(
-          auth: widget.auth,
+          auth: auth,
         );
       }),
     );
   }
-
-  // Example code for sign out.
-  void _signOut() async {
-    await _auth.signOut();
-  }
 }
 
 class _EmailPasswordForm extends StatefulWidget {
-  final FirebaseAuth auth;
+  final AuthService auth;
 
   const _EmailPasswordForm({Key key, this.auth}) : super(key: key);
 
@@ -79,6 +83,8 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
 
   @override
   Widget build(BuildContext context) {
+    final AuthService auth = Provider.of<AuthService>(context);
+
     return Form(
       key: _formKey,
       child: Column(
@@ -115,7 +121,9 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
             child: RaisedButton(
               onPressed: () async {
                 if (_formKey.currentState.validate()) {
-                  _signInWithEmailAndPassword();
+                  auth.signInWithEmailAndPassword(
+                      _emailController.text, _passwordController.text);
+                  Navigator.pop(context);
                 }
               },
               child: const Text('Submit'),
@@ -145,9 +153,9 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
     super.dispose();
   }
 
-  // Example code of how to sign in with email and password.
+/*  // Example code of how to sign in with email and password.
   void _signInWithEmailAndPassword() async {
-    final FirebaseUser user = (await _auth.signInWithEmailAndPassword(
+    final FirebaseUser user = (await .signInWithEmailAndPassword(
       email: _emailController.text,
       password: _passwordController.text,
     ))
@@ -164,5 +172,5 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
     } else {
       _success = false;
     }
-  }
+  }*/
 }

@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/widgets.dart';
 import 'package:roomserviceapp/authentication/auth_service.dart';
 import 'package:provider/provider.dart';
+import 'package:roomserviceapp/pages/login_page.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -25,11 +26,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   // ignore: missing_return
   Widget build(BuildContext context) {
-
     final AuthService auth = Provider.of<AuthService>(context);
 
-    void _signIn() {
-      auth.signInWithEmailAndPassword('matsvandamme@gmail.com', 'nend5XV5');
+    void _goToLoginScreen() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginPage(),
+        ),
+      );
     }
 
     double _overlayWidthFraction = 0.85;
@@ -136,7 +141,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                     ),
                     //color: Color(0xffb00020),
-                    onPressed: _signIn,
+                    onPressed: _goToLoginScreen,
                   ),
                 ),
                 ButtonTheme(
@@ -158,7 +163,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                     ),
                     //color: Color(0xffb00020),
-                    onPressed: _signIn,
+                    onPressed: _goToLoginScreen,
                   ),
                 ),
               ],
