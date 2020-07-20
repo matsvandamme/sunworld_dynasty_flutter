@@ -21,7 +21,7 @@ class _StoreItemState extends State<StoreItem> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        color: Color(0xffaf002c),
+        color: Color(0xffCB1C3F),
         elevation: 10,
         child: Column(
           mainAxisSize: MainAxisSize.min,

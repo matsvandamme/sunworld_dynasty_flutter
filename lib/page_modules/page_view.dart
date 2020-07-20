@@ -27,57 +27,104 @@ class _PageViewWidgetState extends State<PageViewWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+      body: PageViewDriver(
+          currentPageNotifier: _currentPageNotifier,
+          controller: controller,
+          scrollDirection: scrollDirection),
+    );
+  }
+}
 
-      ///A Page View with 3 children
-      body: PageView(
-        onPageChanged: (int index) {
-          _currentPageNotifier.value = index;
-        },
-        physics: BouncingScrollPhysics(),
-        controller: controller,
-        scrollDirection: scrollDirection,
+class PageViewDriver extends StatelessWidget {
+  const PageViewDriver({
+    Key key,
+    @required ValueNotifier<int> currentPageNotifier,
+    @required this.controller,
+    @required this.scrollDirection,
+  })  : _currentPageNotifier = currentPageNotifier,
+        super(key: key);
 
-        ///Enable physics property to provide your PageView with a
-        ///custom scroll behaviour
-        ///Here BouncingScrollPhysics will pull back the boundary
-        ///item (first or last) if the user tries to scroll further.
-        //physics: BouncingScrollPhysics(),
-        pageSnapping: true,
-        children: <Widget>[
-          Container(
-            color: Colors.white,
-            child: Card(
-              color: Color(0xffeeeeee),
-              elevation: 0,
-              margin: EdgeInsets.all(0),
-              child: Center(
-                child: FoodMenu(),
-              ),
-            ),
-          ),
-          Container(
-            color: Colors.white,
-            child: Card(
-              color: Colors.white,
-              elevation: 0,
-              margin: EdgeInsets.all(0),
-              child: Center(
-                child: DrinksMenu(),
-              ),
-            ),
-          ),
-          Container(
-            color: Colors.white,
-            child: Card(
-              color: Color(0xffeeeeee),
-              elevation: 0,
-              margin: EdgeInsets.all(0),
-              child: Center(
-                child: DessertMenu(),
-              ),
-            ),
-          ),
-        ],
+  final ValueNotifier<int> _currentPageNotifier;
+  final PageController controller;
+  final Axis scrollDirection;
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView(
+      onPageChanged: (int index) {
+        _currentPageNotifier.value = index;
+      },
+      physics: BouncingScrollPhysics(),
+      controller: controller,
+      scrollDirection: scrollDirection,
+      pageSnapping: true,
+      children: <Widget>[
+        FoodPage(),
+        DrinkPage(),
+        DessertPage(),
+      ],
+    );
+  }
+}
+
+class DessertPage extends StatelessWidget {
+  const DessertPage({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.transparent,
+      child: Card(
+        color: Color(0xffeeeeee),
+        elevation: 0,
+        margin: EdgeInsets.all(0),
+        child: Center(
+          child: DessertMenu(),
+        ),
+      ),
+    );
+  }
+}
+
+class DrinkPage extends StatelessWidget {
+  const DrinkPage({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.transparent,
+      child: Card(
+        color: Colors.white,
+        elevation: 0,
+        margin: EdgeInsets.all(0),
+        child: Center(
+          child: DrinksMenu(),
+        ),
+      ),
+    );
+  }
+}
+
+class FoodPage extends StatelessWidget {
+  const FoodPage({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.transparent,
+      child: Card(
+        color: Color(0xffeeeeee),
+        elevation: 0,
+        margin: EdgeInsets.all(0),
+        child: Center(
+          child: FoodMenu(),
+        ),
       ),
     );
   }

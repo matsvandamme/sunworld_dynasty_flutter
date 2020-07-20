@@ -10,13 +10,12 @@ class DessertMenu extends StatefulWidget {
 }
 
 class _DessertMenuState extends State<DessertMenu> {
-  Image dessertImage;
+  Image dessertImage = Image.asset('assets/images/dessert.jpeg',fit: BoxFit.cover,);
 
   @override
   void initState() {
     // adjust the provider based on the image type
     super.initState();
-    dessertImage = Image.asset('assets/images/dessert.jpeg', fit: BoxFit.cover);
   }
 
   @override
@@ -32,6 +31,7 @@ class _DessertMenuState extends State<DessertMenu> {
       physics: const BouncingScrollPhysics(),
       slivers: <Widget>[
         SliverAppBar(
+          backgroundColor: Color(0xffCB1C3F),
           pinned: false,
           expandedHeight: 150,
           flexibleSpace: FlexibleSpaceBar(

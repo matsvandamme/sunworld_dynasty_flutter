@@ -12,8 +12,6 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-
-
 class _WelcomeScreenState extends State<WelcomeScreen> {
   initState() {
     super.initState();
@@ -32,16 +30,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
+
+
   @override
   // ignore: missing_return
   Widget build(BuildContext context) {
-
     double _overlayWidthFraction = 0.85;
     double _overlayHeightFraction = 0.66;
 
     return Scaffold(
       body: Stack(children: [
-        Overlay(overlayWidthFraction: _overlayWidthFraction, overlayHeightFraction: _overlayHeightFraction),
+        Overlay(
+            overlayWidthFraction: _overlayWidthFraction,
+            overlayHeightFraction: _overlayHeightFraction),
         Buttons(),
       ]),
     );
@@ -50,69 +51,69 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   // ignore: non_constant_identifier_names
   LayoutBuilder Buttons() {
     return LayoutBuilder(
-        builder: (context, constraints) => Container(
-          margin: EdgeInsets.fromLTRB(constraints.maxWidth * 0.06,
-              constraints.maxHeight * 0.75, constraints.maxWidth * 0.06, 0),
-          color: Colors.transparent,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              registerButton(),
-              loginButton(),
-            ],
-          ),
+      builder: (context, constraints) => Container(
+        margin: EdgeInsets.fromLTRB(constraints.maxWidth * 0.06,
+            constraints.maxHeight * 0.75, constraints.maxWidth * 0.06, 0),
+        color: Colors.transparent,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            registerButton(),
+            loginButton(),
+          ],
         ),
-      );
+      ),
+    );
   }
 
   ButtonTheme loginButton() {
     return ButtonTheme(
-                minWidth: 129,
-                height: 53,
-                child: RaisedButton(
-                  elevation: 7,
-                  color: Color(0xffb00020),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(3)),
-                    side: BorderSide(
-                      color: Color(0xffb00020),
-                    ),
-                  ),
-                  child: Text(
-                    'Log-in',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  //color: Color(0xffb00020),
-                  onPressed: _goToLoginScreen,
-                ),
-              );
+      minWidth: 129,
+      height: 53,
+      child: RaisedButton(
+        elevation: 7,
+        color: Color(0xffb00020),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(3)),
+          side: BorderSide(
+            color: Color(0xffb00020),
+          ),
+        ),
+        child: Text(
+          'Log-in',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        //color: Color(0xffb00020),
+        onPressed: _goToLoginScreen,
+      ),
+    );
   }
 
   ButtonTheme registerButton() {
     return ButtonTheme(
-                minWidth: 129,
-                height: 53,
-                child: RaisedButton(
-                  elevation: 7,
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(3)),
-                    side: BorderSide(
-                      color: Color(0xffCB1C3F),
-                    ),
-                  ),
-                  child: Text(
-                    'Register',
-                    style: TextStyle(
-                      color: Color(0xffCB1C3F),
-                    ),
-                  ),
-                  //color: Color(0xffb00020),
-                  onPressed: _goToLoginScreen,
-                ),
-              );
+      minWidth: 129,
+      height: 53,
+      child: RaisedButton(
+        elevation: 7,
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(3)),
+          side: BorderSide(
+            color: Color(0xffCB1C3F),
+          ),
+        ),
+        child: Text(
+          'Register',
+          style: TextStyle(
+            color: Color(0xffCB1C3F),
+          ),
+        ),
+        //color: Color(0xffb00020),
+        onPressed: _goToLoginScreen,
+      ),
+    );
   }
 }
 
@@ -121,7 +122,9 @@ class Overlay extends StatelessWidget {
     Key key,
     @required double overlayWidthFraction,
     @required double overlayHeightFraction,
-  }) : _overlayWidthFraction = overlayWidthFraction, _overlayHeightFraction = overlayHeightFraction, super(key: key);
+  })  : _overlayWidthFraction = overlayWidthFraction,
+        _overlayHeightFraction = overlayHeightFraction,
+        super(key: key);
 
   final double _overlayWidthFraction;
   final double _overlayHeightFraction;
@@ -132,8 +135,12 @@ class Overlay extends StatelessWidget {
       builder: (context, constraints) => CustomPaint(
         painter: _WelcomeOverlayPainter(),
         child: Stack(children: [
-          OverlayPetalFlower(overlayWidthFraction: _overlayWidthFraction, overlayHeightFraction: _overlayHeightFraction),
-          OverlayText(overlayWidthFraction: _overlayWidthFraction, overlayHeightFraction: _overlayHeightFraction),
+          OverlayPetalFlower(
+              overlayWidthFraction: _overlayWidthFraction,
+              overlayHeightFraction: _overlayHeightFraction),
+          OverlayText(
+              overlayWidthFraction: _overlayWidthFraction,
+              overlayHeightFraction: _overlayHeightFraction),
         ]),
       ),
     );
@@ -145,7 +152,9 @@ class OverlayText extends StatelessWidget {
     Key key,
     @required double overlayWidthFraction,
     @required double overlayHeightFraction,
-  }) : _overlayWidthFraction = overlayWidthFraction, _overlayHeightFraction = overlayHeightFraction, super(key: key);
+  })  : _overlayWidthFraction = overlayWidthFraction,
+        _overlayHeightFraction = overlayHeightFraction,
+        super(key: key);
 
   final double _overlayWidthFraction;
   final double _overlayHeightFraction;
@@ -206,7 +215,9 @@ class OverlayPetalFlower extends StatelessWidget {
     Key key,
     @required double overlayWidthFraction,
     @required double overlayHeightFraction,
-  }) : _overlayWidthFraction = overlayWidthFraction, _overlayHeightFraction = overlayHeightFraction, super(key: key);
+  })  : _overlayWidthFraction = overlayWidthFraction,
+        _overlayHeightFraction = overlayHeightFraction,
+        super(key: key);
 
   final double _overlayWidthFraction;
   final double _overlayHeightFraction;
@@ -223,22 +234,15 @@ class OverlayPetalFlower extends StatelessWidget {
               constraints.maxWidth * _overlayWidthFraction * 0,
               constraints.maxHeight * _overlayHeightFraction * 0.09,
               constraints.maxWidth * _overlayWidthFraction * 0.70,
-              constraints.maxHeight *
-                  _overlayHeightFraction *
-                  (1 - 0.23)),
-          child:
-              Image(image: AssetImage('assets/images/SWDPetal2.png')),
+              constraints.maxHeight * _overlayHeightFraction * (1 - 0.23)),
+          child: Image(image: AssetImage('assets/images/SWDPetal2.png')),
         ),
       ),
     );
   }
 }
 
-
-
 // WELCOME SCREEN WIDGET DONE
-
-
 
 class _WelcomeOverlayPainter extends CustomPainter {
   @override

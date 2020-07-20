@@ -10,23 +10,29 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+
+
+
   @override
   Widget build(BuildContext context) {
     // Call Provider AuthService as defined in main.dart
     final AuthService auth = Provider.of<AuthService>(context);
+    auth.signOut();
     return StreamBuilder(
       stream: auth.onAuthStateChanged,
+      // ignore: missing_return
       builder: (_, AsyncSnapshot<User> snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           final User user = snapshot.data;
           return user == null ? WelcomeScreen() : Store();
         } else {
           return Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+
       },
     );
   }

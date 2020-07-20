@@ -10,28 +10,29 @@ class DrinksMenu extends StatefulWidget {
 }
 
 class _DrinksMenuState extends State<DrinksMenu> {
-  Image drinkImage;
 
   @override
   void initState() {
     // adjust the provider based on the image type
     super.initState();
-    drinkImage = Image.asset('assets/images/drink.jpeg', fit: BoxFit.cover);
+
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-
-    precacheImage(drinkImage.image, context);
   }
 
   @override
   Widget build(BuildContext context) {
+
+    Image drinkImage = Image.asset('assets/images/drink.jpeg',fit: BoxFit.cover,);
+
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: <Widget>[
         SliverAppBar(
+          backgroundColor: Color(0xffCB1C3F),
           pinned: false,
           expandedHeight: 150,
           flexibleSpace: FlexibleSpaceBar(

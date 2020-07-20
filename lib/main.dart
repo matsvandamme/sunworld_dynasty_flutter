@@ -12,12 +12,26 @@ void main() {
   );
 }
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    precacheImage(AssetImage('assets/images/drink.jpeg'), context);
+    precacheImage(AssetImage('assets/images/food.jpeg'), context);
+    precacheImage(AssetImage('assets/images/dessert.jpeg'), context);
+  }
+
   @override
   Widget build(BuildContext context) {
     // Definition of Provider on top of all widgets to provide authentication service to other widgets
-    return Provider<AuthService>.value(
-      value: FirebaseAuthService(),
+    return Provider<AuthService>(
+      create: (_) => FirebaseAuthService(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

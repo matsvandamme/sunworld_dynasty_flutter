@@ -10,8 +10,10 @@ class FoodMenu extends StatefulWidget {
 }
 
 class _FoodMenuState extends State<FoodMenu> {
-
-  final foodImage = Image.asset('assets/images/food.jpeg', fit: BoxFit.cover);
+  Image foodImage = Image.asset(
+    'assets/images/food.jpeg',
+    fit: BoxFit.cover,
+  );
 
   @override
   void initState() {
@@ -22,8 +24,6 @@ class _FoodMenuState extends State<FoodMenu> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-
-    precacheImage(foodImage.image, context);
   }
 
   @override
@@ -32,10 +32,11 @@ class _FoodMenuState extends State<FoodMenu> {
       physics: const BouncingScrollPhysics(),
       slivers: <Widget>[
         SliverAppBar(
+          backgroundColor: Color(0xffCB1C3F),
           pinned: false,
           expandedHeight: 150,
           flexibleSpace: FlexibleSpaceBar(
-            //collapseMode: CollapseMode.parallax,
+            collapseMode: CollapseMode.parallax,
             title: Text("Food"),
             background: ImageFiltered(
               child: foodImage,

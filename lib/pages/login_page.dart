@@ -17,25 +17,7 @@ class _LoginHandlerState extends State<LoginHandler> {
   Widget build(BuildContext context) {
     final AuthService auth = Provider.of<AuthService>(context);
 
-    return StreamBuilder(
-      stream: auth.onAuthStateChanged,
-      builder: (_, AsyncSnapshot<User> snapshot) {
-        if (snapshot.connectionState == ConnectionState.active) {
-          final User user = snapshot.data;
-          return user == null
-              ? LoginPage()
-              : MaterialPageRoute(
-                  builder: (context) => Store(),
-                );
-        } else {
-          return Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-      },
-    );
+    return LoginPage();
   }
 }
 
@@ -67,7 +49,6 @@ class LoginPageState extends State<LoginPage> {
 
 class _EmailPasswordForm extends StatefulWidget {
   final AuthService auth;
-
   const _EmailPasswordForm({Key key, this.auth}) : super(key: key);
 
   @override
