@@ -12,9 +12,8 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
+    // Call Provider AuthService as defined in main.dart
     final AuthService auth = Provider.of<AuthService>(context);
-    //auth.signOut();
-    //auth.signInWithEmailAndPassword('matsvandamme@gmail.com', 'nend5XV5');
     return StreamBuilder(
       stream: auth.onAuthStateChanged,
       builder: (_, AsyncSnapshot<User> snapshot) {
