@@ -5,7 +5,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:roomserviceapp/authentication/auth_service.dart';
-import 'package:roomserviceapp/page_modules/store.dart';
 
 class LoginHandler extends StatefulWidget {
   @override
@@ -81,17 +80,25 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
             decoration: const InputDecoration(labelText: 'Email'),
             validator: (String value) {
               if (value.isEmpty) {
-                return 'Please enter some text';
+                return 'Please enter an e-mail address';
+              } else {
+                if (value
+                        .substring(value.length - '@jandenul.com'.length)
+                        .toLowerCase() !=
+                    '@jandenul.com') {
+                  return 'Please enter a valid Jan De Nul e-mail address';
+                }
               }
               return null;
             },
           ),
           TextFormField(
             controller: _passwordController,
+            obscureText: true,
             decoration: const InputDecoration(labelText: 'Password'),
             validator: (String value) {
               if (value.isEmpty) {
-                return 'Please enter some text';
+                return 'Please enter a password';
               }
               return null;
             },
@@ -102,8 +109,13 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
             child: RaisedButton(
               onPressed: () async {
                 if (_formKey.currentState.validate()) {
-                  auth.signInWithEmailAndPassword(
+                  User user = await auth.signInWithEmailAndPassword(
                       _emailController.text, _passwordController.text);
+
+                  if (user == null) {
+                    print('Dit gaat niet lukken');
+                  }
+
                   Navigator.pop(context);
                 }
               },
@@ -133,25 +145,4 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
     _passwordController.dispose();
     super.dispose();
   }
-
-/*  // Example code of how to sign in with email and password.
-  void _signInWithEmailAndPassword() async {
-    final FirebaseUser user = (await .signInWithEmailAndPassword(
-      email: _emailController.text,
-      password: _passwordController.text,
-    ))
-        .user;
-    if (user != null) {
-      setState(() {
-        _success = true;
-        _userEmail = user.email;
-      });
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Store()),
-      );
-    } else {
-      _success = false;
-    }
-  }*/
 }
