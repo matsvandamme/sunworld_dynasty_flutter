@@ -6,6 +6,7 @@ import 'package:roomserviceapp/pages/landing_page.dart';
 import 'package:roomserviceapp/authentication/auth_service.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
     App(),
