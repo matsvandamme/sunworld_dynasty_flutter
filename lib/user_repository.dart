@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 class UserRepository {
   final FirebaseAuth _firebaseAuth;
 
-  UserRepository(this._firebaseAuth);
+  UserRepository({FirebaseAuth firebaseAuth})
+      : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
 
   Future<AuthResult> signInWithCredentials(
       String email, String password) async {

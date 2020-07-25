@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import 'package:roomserviceapp/authentication/firebase_auth_service.dart';
-import 'package:roomserviceapp/pages/landing_page.dart';
-import 'package:roomserviceapp/authentication/auth_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:roomserviceapp/authentication_bloc/authentication_bloc.dart';
+import 'package:roomserviceapp/user_repository.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  final UserRepository userRepository = UserRepository();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
-    App(),
+    BlocProvider(
+      create: (BuildContext context) =>
+          AuthenticationBloc(userRepository: userRepository)
+            ..add(
+              AuthenticationStarted(),
+            ),
+      child: App(userRepository: userRepository),
+    ),
   );
 }
 
 class App extends StatefulWidget {
+  final UserRepository _userRepository;
+
+  App({Key key, @required UserRepository userRepository})
+      : assert(userRepository != null),
+        _userRepository = userRepository,
+        super(key: key);
+
   @override
   _AppState createState() => _AppState();
 }
@@ -40,12 +53,10 @@ class _AppState extends State<App> {
         primaryColor: Color(0xffCB1C3F),
         accentColor: Color(0xff424242),
       ),
-      home: SafeArea(
-        child: Scaffold(
-          // ! Body has to be replaced by BLoC logic
-          body: null,
-        ),
-      ),
+      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+          builder: (context, state) {
+        return Container();
+      }),
     );
   }
 }
