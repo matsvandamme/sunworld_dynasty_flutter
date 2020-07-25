@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:roomserviceapp/authentication_bloc/authentication_bloc.dart';
-import 'package:roomserviceapp/page_modules/store.dart';
+import 'package:roomserviceapp/pages/store.dart';
 import 'package:roomserviceapp/pages/welcome_screen.dart';
 import 'package:roomserviceapp/user_repository.dart';
 import 'pages/splash_screen.dart';
@@ -40,12 +40,12 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   @override
-  void didChangeDependencies() {
+  void didChangeDependencies() async {
     super.didChangeDependencies();
 
-    precacheImage(AssetImage('assets/images/drink.jpeg'), context);
-    precacheImage(AssetImage('assets/images/food.jpeg'), context);
-    precacheImage(AssetImage('assets/images/dessert.jpeg'), context);
+    await precacheImage(AssetImage('assets/images/drink.jpeg'), context);
+    await precacheImage(AssetImage('assets/images/food.jpeg'), context);
+    await precacheImage(AssetImage('assets/images/dessert.jpeg'), context);
   }
 
   @override

@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:roomserviceapp/page_modules/page_view.dart';
+import 'package:roomserviceapp/pages/placeholder.dart';
 
 class Store extends StatefulWidget {
   Store({Key key}) : super(key: key);
 
   @override
-  _BackdropPageState createState() => new _BackdropPageState();
+  _StoreState createState() => new _StoreState();
 }
 
-class _BackdropPageState extends State<Store>
-    with SingleTickerProviderStateMixin {
+class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
   int _currentIndex = 0;
   final List<Widget> _children = [
     Stack(children: [
       new PageViewWidget(),
       new PageIndicator(),
     ]),
-    null,
+    Placeholder(),
     null,
   ];
 
