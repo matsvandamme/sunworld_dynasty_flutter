@@ -21,7 +21,3 @@ class AuthenticationSuccess extends AuthenticationState {
 }
 
 class AuthenticationFailure extends AuthenticationState {}
-
-class AuthenticationLogin extends AuthenticationState {}
-
-class AuthenticationRegister extends AuthenticationState {}

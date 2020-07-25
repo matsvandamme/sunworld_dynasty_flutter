@@ -24,10 +24,6 @@ class AuthenticationBloc
       yield* _mapAuthenticationLoggedInToState();
     } else if (event is AuthenticationLoggedOut) {
       yield* _mapAuthenticationLoggedOutToState();
-    } else if (event is AuthenticationPressedLogin) {
-      yield AuthenticationLogin();
-    } else if (event is AuthenticationPressedRegister) {
-      yield AuthenticationRegister();
     }
   }
 

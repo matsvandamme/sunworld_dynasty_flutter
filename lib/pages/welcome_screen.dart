@@ -6,10 +6,17 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/widgets.dart';
 import 'package:roomserviceapp/pages/login_page.dart';
+import 'package:roomserviceapp/user_repository.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
+
+  final UserRepository _userRepository;
+  WelcomeScreen({Key key, @required UserRepository userRepository})
+      : assert(userRepository != null),
+        _userRepository = userRepository,
+        super(key: key);
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
@@ -20,17 +27,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     ]);
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
   }
-
-  void _goToLoginScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LoginPage(),
-      ),
-    );
-  }
-
-
 
   @override
   // ignore: missing_return
@@ -86,7 +82,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ),
         //color: Color(0xffb00020),
-        onPressed: _goToLoginScreen,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginScreen(
+                userRepository: widget._userRepository,
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -111,7 +116,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ),
         //color: Color(0xffb00020),
-        onPressed: _goToLoginScreen,
+        onPressed: null,
       ),
     );
   }

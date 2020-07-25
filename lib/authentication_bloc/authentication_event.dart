@@ -10,7 +10,3 @@ class AuthenticationStarted extends AuthenticationEvent {}
 class AuthenticationLoggedIn extends AuthenticationEvent {}
 
 class AuthenticationLoggedOut extends AuthenticationEvent {}
-
-class AuthenticationPressedLogin extends AuthenticationEvent {}
-
-class AuthenticationPressedRegister extends AuthenticationEvent {}

@@ -3,10 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:roomserviceapp/authentication_bloc/authentication_bloc.dart';
+import 'package:roomserviceapp/page_modules/store.dart';
+import 'package:roomserviceapp/pages/welcome_screen.dart';
 import 'package:roomserviceapp/user_repository.dart';
+import 'pages/splash_screen.dart';
+import 'authentication_bloc/bloc_observer.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = SimpleBlocObserver();
   final UserRepository userRepository = UserRepository();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
@@ -54,8 +59,19 @@ class _AppState extends State<App> {
         accentColor: Color(0xff424242),
       ),
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+          // ignore: missing_return
           builder: (context, state) {
-        return Container();
+        if (state is AuthenticationInitial) {
+          return SplashScreen();
+        }
+        if (state is AuthenticationFailure) {
+          return WelcomeScreen(
+            userRepository: widget._userRepository,
+          );
+        }
+        if (state is AuthenticationSuccess) {
+          return Store();
+        }
       }),
     );
   }

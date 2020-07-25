@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:roomserviceapp/page_modules/page_view.dart';
-import 'package:roomserviceapp/pages/placeholder_logout.dart';
 
 class Store extends StatefulWidget {
   Store({Key key}) : super(key: key);
@@ -17,7 +16,7 @@ class _BackdropPageState extends State<Store>
       new PageViewWidget(),
       new PageIndicator(),
     ]),
-    PlaceholderLogout(),
+    null,
     null,
   ];
 
