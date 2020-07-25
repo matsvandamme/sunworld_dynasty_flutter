@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomserviceapp/page_modules/page_view.dart';
-import 'package:roomserviceapp/pages/placeholder.dart';
+import 'package:roomserviceapp/pages/placeholder_logout.dart';
 
 class Store extends StatefulWidget {
   Store({Key key}) : super(key: key);
@@ -16,7 +16,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
       new PageViewWidget(),
       new PageIndicator(),
     ]),
-    Placeholder(),
+    PlaceholderLogout(),
     null,
   ];
 

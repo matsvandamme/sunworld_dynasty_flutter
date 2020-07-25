@@ -40,6 +40,38 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _onLoginEmailChanged() {
+    _loginBloc.add(
+      LoginEmailChanged(email: _emailController.text),
+    );
+  }
+
+  void _onLoginPasswordChanged() async {
+    _loginBloc.add(
+      LoginPasswordChanged(password: _passwordController.text),
+    );
+  }
+
+  void _onFormSubmitted() async {
+    _loginBloc.add(
+      LoginWithCredentialsPressed(
+        email: _emailController.text,
+        password: _passwordController.text,
+      ),
+    );
+    String _user = await _userRepository.getUser();
+    if (_user != null) {
+      Navigator.pop(context);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
@@ -131,34 +163,6 @@ class _LoginFormState extends State<LoginForm> {
             ),
           );
         },
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  void _onLoginEmailChanged() {
-    _loginBloc.add(
-      LoginEmailChanged(email: _emailController.text),
-    );
-  }
-
-  void _onLoginPasswordChanged() {
-    _loginBloc.add(
-      LoginPasswordChanged(password: _passwordController.text),
-    );
-  }
-
-  void _onFormSubmitted() {
-    _loginBloc.add(
-      LoginWithCredentialsPressed(
-        email: _emailController.text,
-        password: _passwordController.text,
       ),
     );
   }
