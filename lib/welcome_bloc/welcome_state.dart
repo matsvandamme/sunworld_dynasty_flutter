@@ -6,7 +6,7 @@ abstract class WelcomeState extends Equatable {
   List<Object> get props => [];
 }
 
-class WelcomeInitial extends WelcomeState {}
+class WelcomeScreenShown extends WelcomeState {}
 
 class LogInScreenShown extends WelcomeState {}
 
