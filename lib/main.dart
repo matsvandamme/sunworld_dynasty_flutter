@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:roomserviceapp/authentication/firebase_auth_service.dart';
 import 'package:roomserviceapp/pages/landing_page.dart';
 import 'package:roomserviceapp/authentication/auth_service.dart';
+import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,19 +33,17 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     // Definition of Provider on top of all widgets to provide authentication service to other widgets
-    return Provider<AuthService>(
-      create: (_) => FirebaseAuthService(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          primaryColor: Color(0xffCB1C3F),
-          accentColor: Color(0xff424242),
-        ),
-        home: SafeArea(
-          child: Scaffold(
-            body: LandingPage(),
-          ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryColor: Color(0xffCB1C3F),
+        accentColor: Color(0xff424242),
+      ),
+      home: SafeArea(
+        child: Scaffold(
+          // ! Body has to be replaced by BLoC logic
+          body: null,
         ),
       ),
     );
