@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		939D55D524CD2792003EB510 /* SWDRoomserviceAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939D55D424CD2792003EB510 /* SWDRoomserviceAppApp.swift */; };
+		939D55D724CD2792003EB510 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939D55D624CD2792003EB510 /* ContentView.swift */; };
+		939D55D924CD2794003EB510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 939D55D824CD2794003EB510 /* Assets.xcassets */; };
+		939D55DC24CD2794003EB510 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 939D55DB24CD2794003EB510 /* Preview Assets.xcassets */; };
+		939D55E724CD2794003EB510 /* SWDRoomserviceAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939D55E624CD2794003EB510 /* SWDRoomserviceAppTests.swift */; };
+		939D55F224CD2794003EB510 /* SWDRoomserviceAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939D55F124CD2794003EB510 /* SWDRoomserviceAppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		939D55E324CD2794003EB510 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 939D55C924CD2792003EB510 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 939D55D024CD2792003EB510;
+			remoteInfo = SWDRoomserviceApp;
+		};
+		939D55EE24CD2794003EB510 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 939D55C924CD2792003EB510 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 939D55D024CD2792003EB510;
+			remoteInfo = SWDRoomserviceApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		939D55D124CD2792003EB510 /* SWDRoomserviceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWDRoomserviceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		939D55D424CD2792003EB510 /* SWDRoomserviceAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWDRoomserviceAppApp.swift; sourceTree = "<group>"; };
+		939D55D624CD2792003EB510 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		939D55D824CD2794003EB510 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		939D55DB24CD2794003EB510 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		939D55DD24CD2794003EB510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		939D55E224CD2794003EB510 /* SWDRoomserviceAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SWDRoomserviceAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		939D55E624CD2794003EB510 /* SWDRoomserviceAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWDRoomserviceAppTests.swift; sourceTree = "<group>"; };
+		939D55E824CD2794003EB510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		939D55ED24CD2794003EB510 /* SWDRoomserviceAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SWDRoomserviceAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		939D55F124CD2794003EB510 /* SWDRoomserviceAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWDRoomserviceAppUITests.swift; sourceTree = "<group>"; };
+		939D55F324CD2794003EB510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		939D55CE24CD2792003EB510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		939D55DF24CD2794003EB510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		939D55EA24CD2794003EB510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		939D55C824CD2792003EB510 = {
+			isa = PBXGroup;
+			children = (
+				939D55D324CD2792003EB510 /* SWDRoomserviceApp */,
+				939D55E524CD2794003EB510 /* SWDRoomserviceAppTests */,
+				939D55F024CD2794003EB510 /* SWDRoomserviceAppUITests */,
+				939D55D224CD2792003EB510 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		939D55D224CD2792003EB510 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				939D55D124CD2792003EB510 /* SWDRoomserviceApp.app */,
+				939D55E224CD2794003EB510 /* SWDRoomserviceAppTests.xctest */,
+				939D55ED24CD2794003EB510 /* SWDRoomserviceAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		939D55D324CD2792003EB510 /* SWDRoomserviceApp */ = {
+			isa = PBXGroup;
+			children = (
+				939D55D424CD2792003EB510 /* SWDRoomserviceAppApp.swift */,
+				939D55D624CD2792003EB510 /* ContentView.swift */,
+				939D55D824CD2794003EB510 /* Assets.xcassets */,
+				939D55DD24CD2794003EB510 /* Info.plist */,
+				939D55DA24CD2794003EB510 /* Preview Content */,
+			);
+			path = SWDRoomserviceApp;
+			sourceTree = "<group>";
+		};
+		939D55DA24CD2794003EB510 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				939D55DB24CD2794003EB510 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		939D55E524CD2794003EB510 /* SWDRoomserviceAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				939D55E624CD2794003EB510 /* SWDRoomserviceAppTests.swift */,
+				939D55E824CD2794003EB510 /* Info.plist */,
+			);
+			path = SWDRoomserviceAppTests;
+			sourceTree = "<group>";
+		};
+		939D55F024CD2794003EB510 /* SWDRoomserviceAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				939D55F124CD2794003EB510 /* SWDRoomserviceAppUITests.swift */,
+				939D55F324CD2794003EB510 /* Info.plist */,
+			);
+			path = SWDRoomserviceAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		939D55D024CD2792003EB510 /* SWDRoomserviceApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 939D55F624CD2794003EB510 /* Build configuration list for PBXNativeTarget "SWDRoomserviceApp" */;
+			buildPhases = (
+				939D55CD24CD2792003EB510 /* Sources */,
+				939D55CE24CD2792003EB510 /* Frameworks */,
+				939D55CF24CD2792003EB510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SWDRoomserviceApp;
+			productName = SWDRoomserviceApp;
+			productReference = 939D55D124CD2792003EB510 /* SWDRoomserviceApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		939D55E124CD2794003EB510 /* SWDRoomserviceAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 939D55F924CD2794003EB510 /* Build configuration list for PBXNativeTarget "SWDRoomserviceAppTests" */;
+			buildPhases = (
+				939D55DE24CD2794003EB510 /* Sources */,
+				939D55DF24CD2794003EB510 /* Frameworks */,
+				939D55E024CD2794003EB510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				939D55E424CD2794003EB510 /* PBXTargetDependency */,
+			);
+			name = SWDRoomserviceAppTests;
+			productName = SWDRoomserviceAppTests;
+			productReference = 939D55E224CD2794003EB510 /* SWDRoomserviceAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		939D55EC24CD2794003EB510 /* SWDRoomserviceAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 939D55FC24CD2794003EB510 /* Build configuration list for PBXNativeTarget "SWDRoomserviceAppUITests" */;
+			buildPhases = (
+				939D55E924CD2794003EB510 /* Sources */,
+				939D55EA24CD2794003EB510 /* Frameworks */,
+				939D55EB24CD2794003EB510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				939D55EF24CD2794003EB510 /* PBXTargetDependency */,
+			);
+			name = SWDRoomserviceAppUITests;
+			productName = SWDRoomserviceAppUITests;
+			productReference = 939D55ED24CD2794003EB510 /* SWDRoomserviceAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		939D55C924CD2792003EB510 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					939D55D024CD2792003EB510 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					939D55E124CD2794003EB510 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 939D55D024CD2792003EB510;
+					};
+					939D55EC24CD2794003EB510 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 939D55D024CD2792003EB510;
+					};
+				};
+			};
+			buildConfigurationList = 939D55CC24CD2792003EB510 /* Build configuration list for PBXProject "SWDRoomserviceApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 939D55C824CD2792003EB510;
+			productRefGroup = 939D55D224CD2792003EB510 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				939D55D024CD2792003EB510 /* SWDRoomserviceApp */,
+				939D55E124CD2794003EB510 /* SWDRoomserviceAppTests */,
+				939D55EC24CD2794003EB510 /* SWDRoomserviceAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		939D55CF24CD2792003EB510 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				939D55DC24CD2794003EB510 /* Preview Assets.xcassets in Resources */,
+				939D55D924CD2794003EB510 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		939D55E024CD2794003EB510 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		939D55EB24CD2794003EB510 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		939D55CD24CD2792003EB510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				939D55D724CD2792003EB510 /* ContentView.swift in Sources */,
+				939D55D524CD2792003EB510 /* SWDRoomserviceAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		939D55DE24CD2794003EB510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				939D55E724CD2794003EB510 /* SWDRoomserviceAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		939D55E924CD2794003EB510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				939D55F224CD2794003EB510 /* SWDRoomserviceAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		939D55E424CD2794003EB510 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 939D55D024CD2792003EB510 /* SWDRoomserviceApp */;
+			targetProxy = 939D55E324CD2794003EB510 /* PBXContainerItemProxy */;
+		};
+		939D55EF24CD2794003EB510 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 939D55D024CD2792003EB510 /* SWDRoomserviceApp */;
+			targetProxy = 939D55EE24CD2794003EB510 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		939D55F424CD2794003EB510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		939D55F524CD2794003EB510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		939D55F724CD2794003EB510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SWDRoomserviceApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SWDRoomserviceApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MVD.SWDRoomserviceApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		939D55F824CD2794003EB510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SWDRoomserviceApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SWDRoomserviceApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MVD.SWDRoomserviceApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		939D55FA24CD2794003EB510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SWDRoomserviceAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MVD.SWDRoomserviceAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SWDRoomserviceApp.app/SWDRoomserviceApp";
+			};
+			name = Debug;
+		};
+		939D55FB24CD2794003EB510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SWDRoomserviceAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MVD.SWDRoomserviceAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SWDRoomserviceApp.app/SWDRoomserviceApp";
+			};
+			name = Release;
+		};
+		939D55FD24CD2794003EB510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SWDRoomserviceAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MVD.SWDRoomserviceAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SWDRoomserviceApp;
+			};
+			name = Debug;
+		};
+		939D55FE24CD2794003EB510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SWDRoomserviceAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MVD.SWDRoomserviceAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SWDRoomserviceApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		939D55CC24CD2792003EB510 /* Build configuration list for PBXProject "SWDRoomserviceApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939D55F424CD2794003EB510 /* Debug */,
+				939D55F524CD2794003EB510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		939D55F624CD2794003EB510 /* Build configuration list for PBXNativeTarget "SWDRoomserviceApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939D55F724CD2794003EB510 /* Debug */,
+				939D55F824CD2794003EB510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		939D55F924CD2794003EB510 /* Build configuration list for PBXNativeTarget "SWDRoomserviceAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939D55FA24CD2794003EB510 /* Debug */,
+				939D55FB24CD2794003EB510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		939D55FC24CD2794003EB510 /* Build configuration list for PBXNativeTarget "SWDRoomserviceAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939D55FD24CD2794003EB510 /* Debug */,
+				939D55FE24CD2794003EB510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 939D55C924CD2792003EB510 /* Project object */;
+}

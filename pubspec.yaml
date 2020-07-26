@@ -35,7 +35,7 @@ dependencies:
   smooth_page_indicator: ^0.1.5
   firebase_auth: ^0.16.1
   align_positioned: ^1.2.6
-  google_fonts: ^1.1.0
+  google_fonts: ^1.1.0 
   google_sign_in: ^4.5.1
   firebase_dynamic_links: ^0.5.1
   provider: ^4.3.1
