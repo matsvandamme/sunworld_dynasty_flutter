@@ -4,6 +4,8 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
+  - Firebase/Analytics (6.28.1):
+    - Firebase/Core
   - Firebase/Auth (6.28.1):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.7.0)
@@ -136,6 +138,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - Firebase/Analytics
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_auth_web (from `.symlinks/plugins/firebase_auth_web/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
@@ -250,6 +253,6 @@ SPEC CHECKSUMS:
   url_launcher_macos: fd7894421cd39320dce5f292fc99ea9270b2a313
   url_launcher_web: e5527357f037c87560776e36436bf2b0288b965c
 
-PODFILE CHECKSUM: c34e2287a9ccaa606aeceab922830efb9a6ff69a
+PODFILE CHECKSUM: 00aaa6d4db7e77387e63ab75593c0eda9eb67a78
 
 COCOAPODS: 1.9.3
