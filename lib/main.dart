@@ -52,6 +52,11 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     // Definition of Provider on top of all widgets to provide authentication service to other widgets
     return MaterialApp(
+      routes: {
+        '/welcome': (context) => WelcomeScreen(
+              userRepository: widget._userRepository,
+            ),
+      },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,

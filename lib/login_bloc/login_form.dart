@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:roomserviceapp/login_bloc/login_button.dart';
+import 'package:roomserviceapp/pages/welcome_screen.dart';
 import 'package:roomserviceapp/user_repository.dart';
 import 'package:roomserviceapp/authentication_bloc/authentication_bloc.dart';
 import 'package:roomserviceapp/login_bloc/login.dart';
@@ -58,17 +59,13 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  void _onFormSubmitted() async {
+  void _onFormSubmitted() {
     _loginBloc.add(
       LoginWithCredentialsPressed(
         email: _emailController.text,
         password: _passwordController.text,
       ),
     );
-    String _user = await _userRepository.getUser();
-    if (_user != null) {
-      Navigator.pop(context);
-    }
   }
 
   @override
@@ -106,6 +103,7 @@ class _LoginFormState extends State<LoginForm> {
         if (state.isSuccess) {
           BlocProvider.of<AuthenticationBloc>(context)
               .add(AuthenticationLoggedIn());
+          Navigator.of(context).pop(context);
         }
       },
       child: BlocBuilder<LoginBloc, LoginState>(
