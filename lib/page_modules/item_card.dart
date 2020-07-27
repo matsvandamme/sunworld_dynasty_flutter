@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:roomserviceapp/classes/menu_items.dart';
 
 class StoreItem extends StatefulWidget {
   final int index;
@@ -32,7 +31,8 @@ class _StoreItemState extends State<StoreItem> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: ClipRRect(borderRadius: BorderRadius.circular(5),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
                   child: Image(
                     image: AssetImage(
                         'assets/images/${widget.list[widget.index].type}/${widget.list[widget.index].imageNumber}.jpeg'),

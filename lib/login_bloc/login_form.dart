@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:roomserviceapp/login_bloc/login_button.dart';
-import 'package:roomserviceapp/pages/welcome_screen.dart';
 import 'package:roomserviceapp/user_repository.dart';
 import 'package:roomserviceapp/authentication_bloc/authentication_bloc.dart';
 import 'package:roomserviceapp/login_bloc/login.dart';
@@ -23,6 +22,7 @@ class _LoginFormState extends State<LoginForm> {
 
   LoginBloc _loginBloc;
 
+  // ignore: unused_element
   UserRepository get _userRepository => widget._userRepository;
 
   bool get isPopulated =>
