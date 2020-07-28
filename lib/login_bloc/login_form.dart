@@ -68,6 +68,12 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
+  void _onResetPassword() {
+    _loginBloc.add(
+      ResetPasswordPressed(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
@@ -113,15 +119,23 @@ class _LoginFormState extends State<LoginForm> {
             child: Form(
               child: ListView(
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    child: Image.asset('assets/flutter_logo.png', height: 200),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: Text(
+                      'Sign in',
+                      style: TextStyle(fontSize: 23),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
                   ),
                   TextFormField(
                     controller: _emailController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.email),
-                      labelText: 'Email',
+                      labelText: 'JDN Email',
                     ),
                     keyboardType: TextInputType.emailAddress,
                     autovalidate: true,
@@ -155,6 +169,10 @@ class _LoginFormState extends State<LoginForm> {
                         ),
                       ],
                     ),
+                  ),
+                  FlatButton(
+                    onPressed: null,
+                    child: Text('Forgot password?'),
                   ),
                 ],
               ),

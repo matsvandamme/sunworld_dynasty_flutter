@@ -7,7 +7,15 @@ class Validators {
   );
 
   static isValidEmail(String email) {
-    return _emailRegExp.hasMatch(email);
+    String _emailTail = email.substring(email.length - 13).toLowerCase();
+    String _correctJDN = '@jandenul.com';
+
+    bool _isRegExpCompliant = _emailRegExp.hasMatch(email);
+    bool _isJDNCompliant = (_emailTail == _correctJDN);
+
+    bool _isValidEmail = _isRegExpCompliant && _isJDNCompliant;
+
+    return _isValidEmail;
   }
 
   static isValidPassword(String password) {

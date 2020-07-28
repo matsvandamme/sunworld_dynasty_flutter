@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/widgets.dart';
 import 'package:roomserviceapp/pages/login_page.dart';
+import 'package:roomserviceapp/pages/registration_page.dart';
 import 'package:roomserviceapp/user_repository.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -76,7 +77,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ),
         child: Text(
-          'Log-in',
+          'Sign in',
           style: TextStyle(
             color: Colors.white,
           ),
@@ -116,7 +117,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ),
         //color: Color(0xffb00020),
-        onPressed: null,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RegistrationScreen(
+                userRepository: widget._userRepository,
+              ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -4,10 +4,10 @@ import 'package:roomserviceapp/login_bloc/login_form.dart';
 import 'package:roomserviceapp/user_repository.dart';
 import 'package:roomserviceapp/login_bloc/login.dart';
 
-class LoginScreen extends StatelessWidget {
+class RegistrationScreen extends StatelessWidget {
   final UserRepository _userRepository;
 
-  LoginScreen({Key key, @required UserRepository userRepository})
+  RegistrationScreen({Key key, @required UserRepository userRepository})
       : assert(userRepository != null),
         _userRepository = userRepository,
         super(key: key);
@@ -15,8 +15,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Color(0xffCB1C3F),
-      appBar: AppBar(),
+      appBar: AppBar(title: Text('Login')),
       body: BlocProvider<LoginBloc>(
         create: (context) => LoginBloc(userRepository: _userRepository),
         child: LoginForm(userRepository: _userRepository),
