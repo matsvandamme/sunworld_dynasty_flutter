@@ -44,12 +44,20 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         email: event.email,
         password: event.password,
       );
+    } else if (event is ResetPasswordPressed) {
+      yield* _mapResetPasswordButtonPressedToState();
     }
   }
 
   Stream<LoginState> _mapLoginEmailChangedToState(String email) async* {
     yield state.update(
       isEmailValid: Validators.isValidEmail(email),
+    );
+  }
+
+  Stream<LoginState> _mapResetPasswordButtonPressedToState() async* {
+    yield state.update(
+      resetPassword: true,
     );
   }
 

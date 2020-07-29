@@ -171,7 +171,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                   FlatButton(
-                    onPressed: null,
+                    onPressed: _onResetPassword,
                     child: Text('Forgot password?'),
                   ),
                 ],

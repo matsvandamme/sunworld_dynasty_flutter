@@ -78,10 +78,12 @@ class LoginState {
   LoginState update({
     bool isEmailValid,
     bool isPasswordValid,
+    bool resetPassword,
   }) {
     return copyWith(
       isEmailValid: isEmailValid,
       isPasswordValid: isPasswordValid,
+      resetPassword: resetPassword,
       isSubmitting: false,
       isSuccess: false,
       isFailure: false,
@@ -95,6 +97,7 @@ class LoginState {
     bool isSubmitting,
     bool isSuccess,
     bool isFailure,
+    bool resetPassword,
   }) {
     return LoginState(
       isEmailValid: isEmailValid ?? this.isEmailValid,
